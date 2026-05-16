@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dr. Chetankumar Patel — Patent & Innovation Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#1B3A6B;--gold:#C8972B;--gold2:#E8B84B;--cream:#FAF7F2;--warm:#F2EDE4;--smoke:#E8E2D8;--ink:#1A1410;--muted:#6B6359;--light:#A89F94;--white:#FFFFFF;--green:#2E7D32;--blue:#1565C0;--amber:#8D6E18;--r:.75rem}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);line-height:1.6;overflow-x:hidden}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1rem 3rem;background:rgba(250,247,242,0.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--smoke)}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;color:var(--navy);letter-spacing:.02em}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{font-size:.78rem;font-weight:500;color:var(--muted);text-decoration:none;letter-spacing:.06em;text-transform:uppercase;transition:color .2s}
+.nav-links a:hover{color:var(--navy)}
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;padding:8rem 3rem 5rem;background:linear-gradient(135deg,var(--navy) 0%,#0F2244 60%,#1a3a70 100%);overflow:hidden}
+.hero::before{content:'';position:absolute;top:-20%;right:-10%;width:60vw;height:60vw;border:1px solid rgba(200,151,43,.12);border-radius:50%}
+.hero::after{content:'';position:absolute;bottom:-30%;left:-5%;width:40vw;height:40vw;border:1px solid rgba(200,151,43,.07);border-radius:50%}
+.hero-inner{position:relative;z-index:2;max-width:900px}
+.eyebrow{font-family:'DM Mono',monospace;font-size:.72rem;color:var(--gold2);letter-spacing:.15em;text-transform:uppercase;margin-bottom:1.5rem;opacity:0;animation:fadeUp .6s .1s forwards}
+.hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.8rem,6vw,5rem);font-weight:700;line-height:1.05;color:var(--white);margin-bottom:.4rem;opacity:0;animation:fadeUp .7s .2s forwards}
+.hero h1 span{color:var(--gold2)}
+.hero-sub{font-size:.95rem;font-weight:300;color:rgba(255,255,255,.55);margin-bottom:2.5rem;opacity:0;animation:fadeUp .7s .3s forwards}
+.stats{display:flex;flex-wrap:wrap;gap:.85rem;margin-bottom:3rem;opacity:0;animation:fadeUp .7s .4s forwards}
+.stat{background:rgba(255,255,255,.07);border:1px solid rgba(200,151,43,.22);border-radius:var(--r);padding:.9rem 1.3rem;text-align:center}
+.stat-n{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:700;color:var(--gold2);line-height:1}
+.stat-l{font-size:.65rem;color:rgba(255,255,255,.45);margin-top:.2rem;letter-spacing:.08em;text-transform:uppercase}
+.cta{display:flex;gap:1rem;flex-wrap:wrap;opacity:0;animation:fadeUp .7s .5s forwards}
+.btn{display:inline-flex;align-items:center;gap:.4rem;padding:.7rem 1.6rem;border-radius:var(--r);font-size:.83rem;font-weight:500;text-decoration:none;cursor:pointer;border:none;transition:all .2s}
+.btn-gold{background:var(--gold);color:var(--white)}
+.btn-gold:hover{background:var(--gold2);transform:translateY(-2px);box-shadow:0 8px 24px rgba(200,151,43,.35)}
+.btn-ghost{background:transparent;color:rgba(255,255,255,.75);border:1px solid rgba(255,255,255,.22)}
+.btn-ghost:hover{border-color:var(--gold2);color:var(--gold2);transform:translateY(-2px)}
+section{position:relative;z-index:1;padding:5rem 3rem}
+.wrap{max-width:1100px;margin:0 auto}
+.stag{font-family:'DM Mono',monospace;font-size:.68rem;color:var(--gold);letter-spacing:.15em;text-transform:uppercase;margin-bottom:.6rem}
+.sh{font-family:'Cormorant Garamond',serif;font-size:clamp(1.9rem,3.5vw,2.8rem);font-weight:700;color:var(--navy);margin-bottom:.8rem;line-height:1.15}
+.ss{font-size:.9rem;color:var(--muted);max-width:580px;margin-bottom:2.5rem}
+#uae{background:var(--navy)}
+#uae .sh{color:var(--white)}
+#uae .stag{color:var(--gold2)}
+#uae .ss{color:rgba(255,255,255,.45)}
+.pgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1px;background:rgba(255,255,255,.08);border-radius:var(--r);overflow:hidden}
+.pc{background:rgba(255,255,255,.04);padding:1.4rem;transition:background .2s}
+.pc:hover{background:rgba(255,255,255,.09)}
+.pb{display:inline-flex;align-items:center;gap:.35rem;font-size:.67rem;font-weight:500;letter-spacing:.05em;text-transform:uppercase;padding:.2rem .65rem;border-radius:20px;margin-bottom:.85rem}
+.ph{background:rgba(46,125,50,.22);color:#81c784}
+.pm{background:rgba(141,110,24,.22);color:#ffd54f}
+.pn{font-size:.92rem;font-weight:500;color:var(--white);margin-bottom:.3rem}
+.pp{font-size:.75rem;color:rgba(255,255,255,.35)}
+.filter-bar{display:flex;flex-wrap:wrap;gap:.45rem;margin-bottom:2.2rem}
+.fb{font-size:.76rem;font-weight:500;padding:.38rem .95rem;border-radius:20px;border:1px solid var(--smoke);background:var(--white);color:var(--muted);cursor:pointer;transition:all .15s}
+.fb:hover{border-color:var(--navy);color:var(--navy)}
+.fb.active{background:var(--navy);color:var(--white);border-color:var(--navy)}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:1.1rem}
+.card{background:var(--white);border:1px solid var(--smoke);border-radius:calc(var(--r)*1.5);overflow:hidden;transition:transform .2s,box-shadow .2s;cursor:pointer}
+.card:hover{transform:translateY(-3px);box-shadow:0 12px 36px rgba(27,58,107,.11)}
+.card.hidden{display:none}
+.ch{background:var(--navy);padding:.9rem 1.1rem;display:flex;align-items:flex-start;justify-content:space-between;gap:.5rem}
+.cnum{font-family:'DM Mono',monospace;font-size:.67rem;color:var(--gold2);background:rgba(200,151,43,.15);padding:.18rem .55rem;border-radius:4px;flex-shrink:0;margin-top:2px}
+.ct{font-family:'Cormorant Garamond',serif;font-size:.97rem;font-weight:600;color:var(--white);line-height:1.35}
+.cbadges{display:flex;flex-wrap:wrap;gap:.35rem;padding:.65rem 1rem;border-bottom:1px solid var(--smoke)}
+.sb{font-size:.65rem;font-weight:500;padding:.18rem .6rem;border-radius:20px;letter-spacing:.04em;text-transform:uppercase}
+.sg{background:#e8f5e9;color:var(--green)}
+.sp{background:#e3f2fd;color:var(--blue)}
+.sf{background:#fef3e2;color:var(--amber)}
+.ub{font-size:.65rem;font-weight:500;padding:.18rem .6rem;border-radius:20px}
+.uh{background:#fff8e1;color:#7B5800;border:1px solid #ffd54f}
+.um{background:#f3f0ff;color:#5B21B6;border:1px solid #c4b5fd}
+.us{background:var(--warm);color:var(--muted);border:1px solid var(--smoke)}
+.cb{padding:.9rem 1rem}
+.cf{margin-bottom:.6rem}
+.fl{font-size:.65rem;font-weight:500;color:var(--light);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.12rem}
+.fv{font-size:.81rem;color:var(--ink);line-height:1.5}
+.detail{max-height:0;overflow:hidden;transition:max-height .35s ease;border-top:1px solid transparent}
+.detail.open{max-height:500px;border-top-color:var(--smoke)}
+.tog{display:flex;align-items:center;justify-content:center;gap:.35rem;width:100%;padding:.65rem;background:var(--warm);border:none;border-top:1px solid var(--smoke);font-size:.76rem;color:var(--navy);font-weight:500;cursor:pointer;transition:background .15s}
+.tog:hover{background:var(--smoke)}
+.ti{transition:transform .3s}
+.tog.open .ti{transform:rotate(180deg)}
+#grants{background:var(--warm)}
+.gtable{width:100%;border-collapse:collapse;font-size:.83rem}
+.gtable th{background:var(--navy);color:var(--white);padding:.7rem .9rem;text-align:left;font-size:.7rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase}
+.gtable td{padding:.7rem .9rem;border-bottom:1px solid var(--smoke);color:var(--ink);vertical-align:top}
+.gtable tr:nth-child(even) td{background:var(--white)}
+.gtable tr:last-child td{border-bottom:none}
+.ac{display:inline-block;background:#fff8e1;color:#7B5800;border:1px solid #ffd54f;border-radius:20px;padding:.12rem .6rem;font-size:.7rem;font-weight:500}
+.cgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:1.4rem}
+.ccard{background:var(--white);border:1px solid var(--smoke);border-radius:calc(var(--r)*1.5);padding:1.6rem;position:relative;overflow:hidden}
+.ccard::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--gold)}
+.ci{font-size:1.9rem;margin-bottom:.9rem}
+.ctitle{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:700;color:var(--navy);margin-bottom:.2rem}
+.csub{font-size:.75rem;color:var(--muted);margin-bottom:.9rem}
+.cpts{list-style:none}
+.cpts li{font-size:.81rem;color:var(--ink);padding:.3rem 0;border-bottom:1px solid var(--warm);display:flex;gap:.4rem;align-items:flex-start}
+.cpts li::before{content:'→';color:var(--gold);flex-shrink:0;margin-top:1px}
+.cpts li:last-child{border-bottom:none}
+#contact{background:var(--navy);text-align:center}
+#contact .sh{color:var(--white)}
+#contact .stag{color:var(--gold2)}
+#contact .ss{color:rgba(255,255,255,.45);margin:0 auto 2.2rem}
+.chips{display:flex;flex-wrap:wrap;gap:.85rem;justify-content:center}
+.chip{display:inline-flex;align-items:center;gap:.55rem;background:rgba(255,255,255,.07);border:1px solid rgba(200,151,43,.22);border-radius:var(--r);padding:.7rem 1.2rem;color:rgba(255,255,255,.75);font-size:.85rem;text-decoration:none;transition:all .2s}
+.chip:hover{background:rgba(200,151,43,.15);border-color:var(--gold2);color:var(--white);transform:translateY(-2px)}
+footer{background:#0D1F3C;padding:1.4rem 3rem;text-align:center;font-size:.72rem;color:rgba(255,255,255,.28);position:relative;z-index:1}
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+@media(max-width:768px){nav{padding:.7rem 1.2rem}.nav-links{display:none}section{padding:3.5rem 1.2rem}.hero{padding:5.5rem 1.2rem 3rem}.stat-n{font-size:1.5rem}.gtable{font-size:.73rem}.gtable th,.gtable td{padding:.55rem .55rem}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">Dr. Chetankumar Patel · Inventor</div>
+  <ul class="nav-links">
+    <li><a href="#uae">UAE Alignment</a></li>
+    <li><a href="#patents">Patents</a></li>
+    <li><a href="#grants">Grants</a></li>
+    <li><a href="#commercialization">Commercialization</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<section class="hero" id="home">
+  <div class="hero-inner">
+    <p class="eyebrow">Patent &amp; Innovation Portfolio · May 2026</p>
+    <h1>Dr. Chetankumar Patel<br><span>PhD · Inventor · Academic Innovator</span></h1>
+    <p class="hero-sub">Associate Professor &amp; Head · RK University, School of Engineering · Rajkot, India</p>
+    <div class="stats">
+      <div class="stat"><div class="stat-n">12</div><div class="stat-l">Utility Patents</div></div>
+      <div class="stat"><div class="stat-n">7</div><div class="stat-l">Design Patents</div></div>
+      <div class="stat"><div class="stat-n">3</div><div class="stat-l">Granted</div></div>
+      <div class="stat"><div class="stat-n">1</div><div class="stat-l">Commercialized</div></div>
+      <div class="stat"><div class="stat-n">5</div><div class="stat-l">High UAE Relevance</div></div>
+      <div class="stat"><div class="stat-n">6+</div><div class="stat-l">Govt Grants</div></div>
+    </div>
+    <div class="cta">
+      <a href="#patents" class="btn btn-gold">Explore Patents ↓</a>
+      <a href="Patent_Portfolio_UAE_with_Images.docx" class="btn btn-ghost" download>Download Portfolio (DOCX)</a>
+    </div>
+  </div>
+</section>
+
+<section id="uae">
+  <div class="wrap">
+    <p class="stag reveal">Strategic Alignment</p>
+    <h2 class="sh reveal">UAE National Priority Mapping</h2>
+    <p class="ss reveal">Five patents are highly aligned with UAE Vision 2031, Health Strategy 2030, Energy Strategy 2050, Food Security Strategy 2051, and Water Security Strategy.</p>
+    <div class="pgrid reveal">
+      <div class="pc"><div class="pb ph">★ High</div><div class="pn">UAE Health Strategy 2030</div><div class="pp">Patents #7 (Spine Mobilizer) · #9 (Breathing Device)</div></div>
+      <div class="pc"><div class="pb ph">★ High</div><div class="pn">UAE Energy Strategy 2050 / Net Zero</div><div class="pp">Patent #11 (Heat Storage Apparatus)</div></div>
+      <div class="pc"><div class="pb ph">★ High</div><div class="pn">Food Security Strategy 2051</div><div class="pp">Patents #4 (Tractor Trolley) · #10 (Oil Expeller)</div></div>
+      <div class="pc"><div class="pb ph">★ High</div><div class="pn">UAE Water Security Strategy</div><div class="pp">Patent #8 (Irrigation Joint Ring)</div></div>
+      <div class="pc"><div class="pb pm">◆ Medium</div><div class="pn">National Urban Mobility Plan 2030</div><div class="pp">Patents #1 · #6 (Retractable Hanging Seat)</div></div>
+      <div class="pc"><div class="pb pm">◆ Medium</div><div class="pn">Occupational Health &amp; Safety (OSHAD)</div><div class="pp">Patents #3 · #5 (Gas Cylinder innovations)</div></div>
+      <div class="pc"><div class="pb pm">◆ Medium</div><div class="pn">Disability Inclusion Strategy</div><div class="pp">Patent #12 (Multipurpose Adjustable Chair)</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="patents" style="background:var(--cream)">
+  <div class="wrap">
+    <p class="stag reveal">Complete IP Portfolio</p>
+    <h2 class="sh reveal">19 Registered Patents</h2>
+    <p class="ss reveal">12 utility + 7 design patents registered with Indian Patent Office. Click any card to expand full UAE market analysis and innovation details.</p>
+    <div class="filter-bar reveal">
+      <button class="fb active" onclick="filterCards('all',this)">All (12)</button>
+      <button class="fb" onclick="filterCards('granted',this)">Granted (3)</button>
+      <button class="fb" onclick="filterCards('high',this)">High UAE Relevance (5)</button>
+      <button class="fb" onclick="filterCards('health',this)">Health Tech</button>
+      <button class="fb" onclick="filterCards('agri',this)">AgriTech</button>
+      <button class="fb" onclick="filterCards('energy',this)">Energy</button>
+      <button class="fb" onclick="filterCards('transport',this)">Transport</button>
+    </div>
+    <div class="cards" id="cardsGrid"></div>
+  </div>
+</section>
+
+<section id="grants">
+  <div class="wrap">
+    <p class="stag reveal">Third-Party Validation</p>
+    <h2 class="sh reveal">Government Grants &amp; Recognition</h2>
+    <p class="ss reveal">Innovation independently funded by multiple Government of India bodies — official recognition of technical merit, commercial viability, and societal impact.</p>
+    <div class="reveal" style="overflow-x:auto">
+      <table class="gtable">
+        <thead><tr><th>Funding Body</th><th>Scheme / Purpose</th><th>Amount</th><th>Related Innovation</th></tr></thead>
+        <tbody>
+          <tr><td>Dept of Science &amp; Technology (DST), Govt of India</td><td>Nidhi ITB Startup Grant — Spine Mobilizer commercialization</td><td><span class="ac">INR 4,85,000</span></td><td>Spine Mobilization Device</td></tr>
+          <tr><td>SSIP Gujarat</td><td>Proof of Concept Grant — Tractor Trolley</td><td><span class="ac">INR 98,800</span></td><td>Multipurpose Tractor Trolley</td></tr>
+          <tr><td>SSIP Gujarat</td><td>IPR Grant — Multiple utility patents</td><td><span class="ac">INR 50,000/patent</span></td><td>Various utility patents</td></tr>
+          <tr><td>Gujcost</td><td>Research &amp; Innovation Grant</td><td><span class="ac">As sanctioned</span></td><td>Multiple projects</td></tr>
+          <tr><td>Industrial Commissionerate, Gujarat</td><td>Startup and Innovation support</td><td><span class="ac">As sanctioned</span></td><td>Spine Mobilizer startup</td></tr>
+          <tr><td>SSIP Gujarat</td><td>Student Innovation Fund — PoC projects</td><td><span class="ac">Multiple grants</span></td><td>Retractable Seat, Gas Cylinder, Stirrer</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section id="commercialization" style="background:var(--cream)">
+  <div class="wrap">
+    <p class="stag reveal">Market Readiness</p>
+    <h2 class="sh reveal">Commercialization &amp; Technology Transfer</h2>
+    <p class="ss reveal">Three key innovations are commercialized, granted, or transfer-ready with clear UAE market pathways.</p>
+    <div class="cgrid">
+      <div class="ccard reveal">
+        <div class="ci">🦴</div>
+        <div class="ctitle">Spine Mobilization Device</div>
+        <div class="csub">COMMERCIALIZED · In Market · Patent IN 202221059481</div>
+        <ul class="cpts">
+          <li>Only handheld spine mobilization device globally at time of filing</li>
+          <li>Currently sold commercially with branded retail packaging</li>
+          <li>Two registered designs (379188-001 &amp; 379193-001)</li>
+          <li>UAE targets: Aster, NMC Health, Burjeel, Mediclinic</li>
+          <li>900+ physiotherapy clinics in UAE — immediate addressable market</li>
+        </ul>
+      </div>
+      <div class="ccard reveal">
+        <div class="ci">🫁</div>
+        <div class="ctitle">Breathing Retraining Device</div>
+        <div class="csub">GRANTED MARCH 2026 · Transfer Ready · Patent IN 202321018886</div>
+        <ul class="cpts">
+          <li>Only multi-parameter device measuring volume, pressure &amp; resistance simultaneously</li>
+          <li>Most recently granted patent — March 2026</li>
+          <li>UAE need: post-COVID rehab, occupational lung disease, pediatric asthma</li>
+          <li>Pathway: licensing to UAE hospital networks or home-care companies</li>
+          <li>Targets: Mediclinic, Cleveland Clinic Abu Dhabi, SEHA</li>
+        </ul>
+      </div>
+      <div class="ccard reveal">
+        <div class="ci">🌾</div>
+        <div class="ctitle">Multipurpose Tractor Trolley</div>
+        <div class="csub">GRANTED OCT 2023 · AgriTech · Patent IN 202021024990</div>
+        <ul class="cpts">
+          <li>75% reduction in forage collection time — PoC validated</li>
+          <li>70% reduction in operational cost demonstrated</li>
+          <li>UAE targets: Al Ain cooperatives, camel farms, RAK livestock</li>
+          <li>Aligns with UAE Food Security Strategy 2051</li>
+          <li>SSIP PoC Grant (INR 98,800) + Startup Grant awarded</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <p class="stag">Get in Touch</p>
+    <h2 class="sh">Open to UAE Opportunities</h2>
+    <p class="ss">Available for technology transfer discussions, licensing, research collaboration, and UAE employment opportunities in engineering, innovation, or academia.</p>
+    <div class="chips">
+      <a href="mailto:chetanpatel@rku.ac.in" class="chip"><span>✉</span>chetanpatel@rku.ac.in</a>
+      <a href="tel:+919XXXXXXXXX" class="chip"><span>📞</span>[+91-XXXXXXXXXX]</a>
+      <a href="https://linkedin.com/in/[your-profile]" class="chip" target="_blank"><span>💼</span>LinkedIn Profile</a>
+      <a href="https://orcid.org/[your-orcid]" class="chip" target="_blank"><span>🔬</span>ORCID Profile</a>
+      <a href="Patent_Portfolio_UAE_with_Images.docx" class="chip" download><span>📄</span>Download Full Portfolio (DOCX)</a>
+    </div>
+  </div>
+</section>
+
+<footer>© 2026 Dr. Chetankumar Patel · Patent &amp; Innovation Portfolio · RK University, Rajkot · Prepared for UAE Ministry of Economy Golden Visa Application &amp; UAE Employment</footer>
+
+<script>
+const patents=[
+  {n:1,title:'Supplementary Seat for Public Transport with Retractable Hanging Support',app:'201921006650',status:'granted',uae:'medium',domain:'transport',dates:'Published: March 2019 | Granted: June 2023',designs:'Design No. 326481-001 (Jan 2020)',strat:'UAE National Urban Mobility Plan 2030 — public transport capacity optimisation',market:'Dubai Metro and Abu Dhabi bus networks — deployable by RTA without structural modification',impact:'Granted. Novel retractable telescopic mechanism. SSIP-funded proof of concept.',funding:'SSIP PoC Grant + IPR Grant'},
+  {n:2,title:'Mechanically Operated Self-Stirring Container',app:'201921019035',status:'published',uae:'standard',domain:'consumer',dates:'Published: May 2019',designs:'Design No. 326482-001 (Aug 2020)',strat:'Consumer product innovation — UAE hospitality, food service and retail',market:'UAE hospitality and corporate gifting sector. Zero electricity required.',impact:'Mechanical internal gear mechanism. No electrical components.',funding:'SSIP PoC Grant'},
+  {n:3,title:'A Single Unit Gas Cylinder with Partition',app:'201821044415',status:'published',uae:'medium',domain:'industrial',dates:'Published: June 2019',designs:'Design No. 326480-001 (Sep 2020)',strat:'UAE Industrial Safety — construction, welding and manufacturing sectors',market:'UAE mega-construction projects and ADNOC industrial supply chains',impact:'Dual-chamber design replacing two separate cylinders. Reduces handling risk.',funding:'SSIP IPR Grant'},
+  {n:4,title:'Multipurpose Tractor Trolley with Chaff Cutter and Distribution Assembly',app:'202021024990',status:'granted',uae:'high',domain:'agri',dates:'Granted: October 2023',designs:'None',strat:'UAE Food Security Strategy 2051 — agricultural productivity and cost reduction',market:'UAE cooperatives, camel farms, livestock operations — Al Ain, Ras Al Khaimah',impact:'75% time saving, 70% cost reduction. SSIP PoC + Startup Grant awarded.',funding:'SSIP PoC (INR 98,800) + IPR Grant + Startup Grant'},
+  {n:5,title:'A Dragging Device for the Gas Cylinders',app:'202121044960',status:'published',uae:'medium',domain:'industrial',dates:'Published: October 2021',designs:'None',strat:'UAE Occupational Health & Safety (OSHAD) — industrial and construction sites',market:'Addresses manual handling injury risk in UAE large industrial workforce',impact:'Wheeled cradle eliminating manual lifting of heavy gas cylinders.',funding:'Self-funded'},
+  {n:6,title:'A Design and Development of Retractable Hanging Seat',app:'202121001209',status:'published',uae:'medium',domain:'transport',dates:'Published: July 2022',designs:'None',strat:'UAE Urban Mobility — metro, tram and bus rapid transit systems',market:'RTA Dubai and DoT Abu Dhabi metro and tram systems',impact:'Advanced variant. Retracted ~400mm, contracted ~1300mm. Dimensionally validated.',funding:'SSIP IPR Grant (INR 50,000)'},
+  {n:7,title:'A Spine Mobilization Device',app:'IN 202221059481',status:'published',uae:'high',domain:'health',dates:'Published: October 2022',designs:'Design Nos. 379188-001 + 379193-001 (Feb 2023)',strat:'UAE Health Strategy 2030 — musculoskeletal rehabilitation and medical tourism',market:'900+ physiotherapy clinics. Transfer targets: Aster, NMC, Burjeel, Mediclinic',impact:'COMMERCIALIZED. Only such device globally at filing. DST Nidhi ITB grant awarded.',funding:'DST Nidhi ITB (INR 4,85,000) + SSIP'},
+  {n:8,title:'A Joint Ring for Extension Pipe in Irrigation System',app:'IN 202221065844',status:'published',uae:'high',domain:'agri',dates:'Filed: November 2022',designs:'None',strat:'UAE Water Security Strategy — precision irrigation and desert agriculture',market:'UAE drip irrigation, vertical farms, desert agriculture — Al Dhafra and Liwa',impact:'Solves structural weaknesses in conventional irrigation joints. SSIP grant.',funding:'SSIP IPR Grant (INR 50,000)'},
+  {n:9,title:'A Breathing Retraining Device',app:'IN 202321018886',status:'granted',uae:'high',domain:'health',dates:'Published: April 2023 | Granted: March 2026',designs:'None',strat:'UAE Health Strategy 2030 — respiratory health, post-COVID and preventive care',market:'Hospital networks, home-care — Mediclinic, Cleveland Clinic Abu Dhabi, SEHA',impact:'MOST RECENT GRANT (Mar 2026). Only multi-parameter breathing retraining device.',funding:'Multidisciplinary institutional research'},
+  {n:10,title:'Dual Chamber Oil Expeller',app:'IN 202321062068',status:'published',uae:'medium',domain:'agri',dates:'Published: December 2023',designs:'None',strat:'UAE Food Security Strategy 2051 — food processing and agri-industrial innovation',market:'UAE agri-food SMEs and cooperative oil processing units',impact:'Dual-chamber design improving oil extraction efficiency over conventional units.',funding:'Institutional research'},
+  {n:11,title:'The Apparatus for Heat Storage: Heat Prevent Box',app:'IN 202321072149 A',status:'published',uae:'high',domain:'energy',dates:'Published: November 2023',designs:'None',strat:'UAE Energy Strategy 2050 & Net Zero — thermal energy storage and solar integration',market:'UAE solar thermal storage, cold chain logistics, building energy management — DEWA roadmap',impact:'Novel partitioned thermal chamber. 600×600×300mm. UAE extreme climate applicable.',funding:'Institutional research'},
+  {n:12,title:'A Multipurpose Adjustable Chair',app:'IN 202521014193',status:'published',uae:'medium',domain:'health',dates:'Filed: February 2025',designs:'None',strat:'UAE Disability Inclusion Strategy — assistive technology and accessible design',market:'UAE healthcare facilities, schools, elderly care homes, inclusive public spaces',impact:'Screw-jack height adjustment, foldable modular design. Filed Feb 2025.',funding:'Self-funded'},
+];
+
+function sc(s){return s==='granted'?'sg':s==='published'?'sp':'sf'}
+function sl(s){return s==='granted'?'Granted':s==='published'?'Published':'Filed'}
+function uc(u){return u==='high'?'uh':u==='medium'?'um':'us'}
+function ul(u){return u==='high'?'★ High UAE Relevance':u==='medium'?'◆ Medium UAE Relevance':'◇ Standard'}
+
+function render(){
+  document.getElementById('cardsGrid').innerHTML=patents.map(p=>`
+    <article class="card" data-status="${p.status}" data-uae="${p.uae}" data-domain="${p.domain}">
+      <div class="ch" onclick="tog(this.closest('.card'))">
+        <span class="cnum">#${p.n}</span>
+        <div class="ct">${p.title}</div>
+      </div>
+      <div class="cbadges">
+        <span class="sb ${sc(p.status)}">${sl(p.status)}</span>
+        <span class="ub ${uc(p.uae)}">${ul(p.uae)}</span>
+      </div>
+      <div class="cb">
+        <div class="cf"><div class="fl">Application No.</div><div class="fv" style="font-family:'DM Mono',monospace;font-size:.76rem">${p.app}</div></div>
+        <div class="cf"><div class="fl">Dates</div><div class="fv">${p.dates}</div></div>
+        <div class="cf"><div class="fl">UAE Strategic Alignment</div><div class="fv">${p.strat}</div></div>
+      </div>
+      <div class="detail" id="d${p.n}">
+        <div class="cb" style="padding-top:0">
+          <div class="cf"><div class="fl">UAE Market Application</div><div class="fv">${p.market}</div></div>
+          <div class="cf"><div class="fl">Innovation Impact</div><div class="fv">${p.impact}</div></div>
+          <div class="cf"><div class="fl">Design Registrations</div><div class="fv">${p.designs}</div></div>
+          <div class="cf"><div class="fl">Funding / Recognition</div><div class="fv">${p.funding}</div></div>
+        </div>
+      </div>
+      <button class="tog" onclick="tog(this.closest('.card'))"><span>View full details</span><span class="ti">↓</span></button>
+    </article>`).join('');
+}
+
+function tog(card){
+  const d=card.querySelector('.detail'),b=card.querySelector('.tog'),o=d.classList.contains('open');
+  d.classList.toggle('open',!o);b.classList.toggle('open',!o);
+  b.querySelector('span:first-child').textContent=o?'View full details':'Hide details';
+}
+
+function filterCards(f,btn){
+  document.querySelectorAll('.fb').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.card').forEach(c=>{
+    let show=false;
+    if(f==='all')show=true;
+    if(f==='granted')show=c.dataset.status==='granted';
+    if(f==='high')show=c.dataset.uae==='high';
+    if(f==='health')show=c.dataset.domain==='health';
+    if(f==='agri')show=c.dataset.domain==='agri';
+    if(f==='energy')show=c.dataset.domain==='energy';
+    if(f==='transport')show=c.dataset.domain==='transport';
+    c.classList.toggle('hidden',!show);
+  });
+}
+
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('visible'),i*80);obs.unobserve(e.target)}});
+},{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+render();
+</script>
+</body>
+</html>
