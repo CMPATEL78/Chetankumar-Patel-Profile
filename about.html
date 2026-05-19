@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About & CV — Dr. Chetankumar Patel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+.page-hero{padding:calc(var(--nav-h) + 3rem) 3rem 3rem;background:linear-gradient(135deg,var(--navy) 0%,#0F2244 100%);position:relative;overflow:hidden}
+.page-hero::before{content:'';position:absolute;top:-30%;right:-10%;width:50vw;height:50vw;border:1px solid rgba(200,151,43,.08);border-radius:50%}
+.page-hero-inner{max-width:1100px;margin:0 auto;position:relative;z-index:2}
+.page-hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.5rem,5vw,4rem);font-weight:700;color:var(--white);margin-bottom:.4rem;line-height:1.1}
+.page-hero p{font-size:.92rem;color:rgba(255,255,255,.5);margin-bottom:1.5rem}
+.breadcrumb{display:flex;align-items:center;gap:.5rem;font-size:.75rem;color:rgba(255,255,255,.4);margin-bottom:1.5rem}
+.breadcrumb a{color:rgba(255,255,255,.5);text-decoration:none;transition:color .15s}
+.breadcrumb a:hover{color:var(--gold2)}
+.page-nav{display:flex;flex-wrap:wrap;gap:.5rem}
+.pnav-btn{font-size:.75rem;font-weight:500;padding:.35rem .9rem;border-radius:20px;color:rgba(255,255,255,.6);border:1px solid rgba(255,255,255,.15);text-decoration:none;transition:all .15s}
+.pnav-btn:hover{color:var(--white);border-color:var(--gold2)}
+
+/* LAYOUT */
+.cv-layout{display:grid;grid-template-columns:260px 1fr;gap:2.5rem;max-width:1100px;margin:0 auto}
+.cv-sidebar{position:sticky;top:calc(var(--nav-h) + 1.5rem);height:fit-content}
+.sidebar-nav{background:var(--white);border:1px solid var(--smoke);border-radius:calc(var(--r)*1.5);overflow:hidden}
+.sn-item{display:flex;align-items:center;gap:.6rem;padding:.75rem 1rem;font-size:.82rem;color:var(--muted);text-decoration:none;border-bottom:1px solid var(--smoke);transition:all .15s}
+.sn-item:last-child{border-bottom:none}
+.sn-item:hover{color:var(--navy);background:var(--warm)}
+.sn-item.active{color:var(--navy);background:var(--warm);font-weight:500}
+.sn-icon{font-size:.9rem;flex-shrink:0}
+.cv-main{}
+.cv-section{margin-bottom:3.5rem;scroll-margin-top:calc(var(--nav-h) + 1.5rem)}
+.cv-section h2{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:700;color:var(--navy);margin-bottom:.5rem;padding-bottom:.4rem;border-bottom:2px solid var(--gold)}
+
+/* EXPERIENCE TIMELINE */
+.role-card{background:var(--white);border:1px solid var(--smoke);border-radius:calc(var(--r)*1.5);padding:1.35rem;margin-bottom:1rem;position:relative;overflow:hidden}
+.role-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--navy)}
+.role-card.current::before{background:var(--gold)}
+.role-card.industry::before{background:var(--green)}
+.role-header{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;margin-bottom:.75rem;flex-wrap:wrap}
+.role-title{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:700;color:var(--navy)}
+.role-badge{font-size:.68rem;font-weight:500;padding:.18rem .65rem;border-radius:20px;white-space:nowrap;flex-shrink:0}
+.rb-current{background:rgba(200,151,43,.15);color:var(--amber);border:1px solid rgba(200,151,43,.3)}
+.rb-past{background:var(--warm);color:var(--muted);border:1px solid var(--smoke)}
+.rb-industry{background:#e8f5e9;color:var(--green)}
+.role-org{font-size:.85rem;color:var(--muted);margin-bottom:.2rem}
+.role-dur{font-family:'DM Mono',monospace;font-size:.72rem;color:var(--light);margin-bottom:.75rem}
+.role-pts{list-style:none}
+.role-pts li{font-size:.83rem;color:var(--ink);padding:.28rem 0;border-bottom:1px solid var(--warm);display:flex;gap:.5rem}
+.role-pts li::before{content:'→';color:var(--gold);flex-shrink:0;margin-top:1px}
+.role-pts li:last-child{border-bottom:none}
+
+/* AWARDS */
+.award-item{display:flex;gap:1rem;padding:1rem 0;border-bottom:1px solid var(--smoke);align-items:flex-start}
+.award-item:last-child{border-bottom:none}
+.award-icon{font-size:1.5rem;flex-shrink:0;margin-top:2px}
+.award-title{font-size:.9rem;font-weight:500;color:var(--ink);margin-bottom:.15rem}
+.award-sub{font-size:.78rem;color:var(--muted)}
+
+/* MEMBERSHIPS */
+.membership-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:.85rem}
+.mem-card{background:var(--white);border:1px solid var(--smoke);border-radius:var(--r);padding:1rem;display:flex;gap:.75rem;align-items:flex-start}
+.mem-icon{font-size:1.3rem;flex-shrink:0}
+.mem-name{font-size:.85rem;font-weight:500;color:var(--navy);margin-bottom:.1rem}
+.mem-type{font-size:.74rem;color:var(--muted)}
+
+/* EDITORIAL */
+.ed-item{padding:.6rem 0;border-bottom:1px solid var(--smoke);font-size:.83rem;color:var(--ink);display:flex;gap:.5rem;align-items:flex-start}
+.ed-item::before{content:'·';color:var(--gold);font-weight:700;flex-shrink:0}
+.ed-item:last-child{border-bottom:none}
+
+/* PERSONAL */
+.personal-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:.75rem}
+.pers-item{background:var(--white);border:1px solid var(--smoke);border-radius:var(--r);padding:.85rem 1rem}
+.pers-label{font-size:.68rem;font-weight:500;color:var(--light);text-transform:uppercase;letter-spacing:.07em;margin-bottom:.2rem}
+.pers-val{font-size:.88rem;color:var(--ink);font-weight:500}
+
+/* DOWNLOAD STRIP */
+.dl-strip{background:var(--navy);border-radius:calc(var(--r)*1.5);padding:1.5rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-bottom:2rem}
+.dl-strip p{font-size:.9rem;color:rgba(255,255,255,.7);max-width:500px}
+
+@media(max-width:900px){
+  .cv-layout{grid-template-columns:1fr}
+  .cv-sidebar{position:static}
+  .page-hero{padding:calc(var(--nav-h) + 2rem) 1.25rem 2rem}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">Dr. Chetankumar Patel</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html" class="active">About & CV</a></li>
+    <li><a href="research.html">Research</a></li>
+    <li><a href="patent-portfolio.html">Patents</a></li>
+    <li><a href="index.html#projects">Projects</a></li>
+    <li><a href="index.html#activities">Activities</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="breadcrumb"><a href="index.html">Home</a> <span>›</span> <span>About & CV</span></div>
+    <h1>About & Full CV</h1>
+    <p>23+ Years of Academic Excellence · Professor · Inventor · Author · Mentor</p>
+    <div class="page-nav">
+      <a href="#experience" class="pnav-btn">Experience</a>
+      <a href="#education" class="pnav-btn">Education</a>
+      <a href="#awards" class="pnav-btn">Awards</a>
+      <a href="#memberships" class="pnav-btn">Memberships</a>
+      <a href="#editorial" class="pnav-btn">Editorial Roles</a>
+      <a href="#personal" class="pnav-btn">Personal</a>
+    </div>
+  </div>
+</div>
+
+<!-- BODY -->
+<section style="padding:3rem 3rem">
+  <div class="cv-layout">
+
+    <!-- SIDEBAR -->
+    <div class="cv-sidebar">
+      <nav class="sidebar-nav">
+        <a href="#summary" class="sn-item active"><span class="sn-icon">👤</span>Profile Summary</a>
+        <a href="#experience" class="sn-item"><span class="sn-icon">💼</span>Experience</a>
+        <a href="#education" class="sn-item"><span class="sn-icon">🎓</span>Education</a>
+        <a href="#awards" class="sn-item"><span class="sn-icon">🏆</span>Awards</a>
+        <a href="#memberships" class="sn-item"><span class="sn-icon">🤝</span>Memberships</a>
+        <a href="#editorial" class="sn-item"><span class="sn-icon">📝</span>Editorial Roles</a>
+        <a href="#extension" class="sn-item"><span class="sn-icon">🌱</span>Extension Activities</a>
+        <a href="#personal" class="sn-item"><span class="sn-icon">ℹ️</span>Personal Details</a>
+      </nav>
+      <div style="margin-top:1rem">
+        <a href="research.html" class="btn btn-navy" style="width:100%;justify-content:center;margin-bottom:.6rem">View Research →</a>
+        <a href="patent-portfolio.html" class="btn btn-outline" style="width:100%;justify-content:center">Patent Portfolio →</a>
+      </div>
+    </div>
+
+    <!-- MAIN -->
+    <div class="cv-main">
+
+      <!-- DOWNLOAD STRIP -->
+      <div class="dl-strip">
+        <p>Download the complete patent & innovation portfolio prepared for UAE Ministry of Economy Golden Visa nomination and employment applications.</p>
+        <a href="Patent_Portfolio_UAE_with_Images.docx" class="btn btn-gold" download>📄 Download Portfolio (DOCX)</a>
+      </div>
+
+      <!-- PROFILE SUMMARY -->
+      <div class="cv-section" id="summary">
+        <h2>Profile Summary</h2>
+        <p style="font-size:.92rem;color:var(--ink);line-height:1.75;margin-top:1rem">Academic leader and Professor with <strong>23+ years of experience in Higher Education Institutions</strong> and 2 years of industry exposure, demonstrating strong capabilities in academic governance, teaching–learning innovation, research coordination, and quality assurance. Proven expertise in academic planning, curriculum design, Outcome-Based Education (OBE), and implementation of learner-centric pedagogies such as Problem-Based Learning (PBL), Project-Based Learning, and blended learning using LMS platforms.</p>
+        <p style="font-size:.92rem;color:var(--ink);line-height:1.75;margin-top:.85rem">Played key leadership roles in NAAC and NIRF accreditation and ranking processes. Led a robust research and innovation ecosystem with <strong>30+ funded projects, 19 patents, and 80 research publications</strong>, promoting IPR generation, applied research, and industry-aligned outcomes. Experienced in faculty mentoring, doctoral guidance, startup nurturing, and interdisciplinary collaboration. Authored and co-authored <strong>three books</strong> reflecting a systems-driven approach to academic excellence, pedagogy, and leadership.</p>
+        <div class="stat-row" style="margin-top:1.5rem">
+          <div class="stat-box"><div class="stat-n">23+</div><div class="stat-l">Years Experience</div></div>
+          <div class="stat-box"><div class="stat-n">80</div><div class="stat-l">Publications</div></div>
+          <div class="stat-box"><div class="stat-n">19</div><div class="stat-l">Patents</div></div>
+          <div class="stat-box"><div class="stat-n">13</div><div class="stat-l">PhD Supervised</div></div>
+          <div class="stat-box"><div class="stat-n">3</div><div class="stat-l">Books</div></div>
+          <div class="stat-box"><div class="stat-n">₹37L+</div><div class="stat-l">Grants Received</div></div>
+        </div>
+      </div>
+
+      <!-- EXPERIENCE -->
+      <div class="cv-section" id="experience">
+        <h2>Academic & Professional Experience</h2>
+        <p style="font-size:.83rem;color:var(--muted);margin:.75rem 0 1.5rem">Total: 23 years academic + 2 years industry</p>
+
+        <div class="role-card current">
+          <div class="role-header">
+            <div>
+              <div class="role-title">Professor</div>
+              <div class="role-org">Mechanical Engineering Dept., RK University, Rajkot (Gujarat), India</div>
+              <div class="role-dur">January 1, 2025 – Present · 1 Year</div>
+            </div>
+            <span class="role-badge rb-current">Current</span>
+          </div>
+          <ul class="role-pts">
+            <li>Conduct research on the intersection of technology and teaching-learning, resulting in peer-reviewed publications</li>
+            <li>Bridging the gap between healthcare needs and innovative design solutions through interdisciplinary projects, particularly in physiotherapy</li>
+            <li>Translate research and project work into patented inventions — commitment to innovation and IPR development</li>
+          </ul>
+        </div>
+
+        <div class="role-card">
+          <div class="role-header">
+            <div>
+              <div class="role-title">Professor & Head</div>
+              <div class="role-org">Mechanical Engineering Dept., RK University, Rajkot (Gujarat), India</div>
+              <div class="role-dur">September 1, 2020 – December 31, 2024 · 4 Years 4 Months</div>
+            </div>
+            <span class="role-badge rb-past">Past</span>
+          </div>
+          <ul class="role-pts">
+            <li>Crafted immersive learning experiences across diverse subjects; developed instructional designs for ongoing courses</li>
+            <li>Collaboratively established a Board of Studies, leveraging industry professionals, academics, and alumni</li>
+            <li>Spearheaded research advancements as Research Coordinator</li>
+            <li>Oversaw accreditation processes, including NAAC and NIRF evaluations</li>
+            <li>Executed multiple research projects, securing fellowships up to Rs. 1 lakh</li>
+            <li>Contributed as member of PhD monitoring committees across various universities</li>
+            <li>Nurtured innovative startups through incubation, securing grants for diverse projects</li>
+            <li>Founded "TEJAS," a dedicated group for accelerated learners, offering tailored guidance and counseling</li>
+          </ul>
+        </div>
+
+        <div class="role-card">
+          <div class="role-header">
+            <div>
+              <div class="role-title">Associate Professor & Head</div>
+              <div class="role-org">Mechanical Engineering Dept., RK University, Rajkot (Gujarat), India</div>
+              <div class="role-dur">June 28, 2019 – August 31, 2020 · 1 Year 2 Months</div>
+            </div>
+            <span class="role-badge rb-past">Past</span>
+          </div>
+          <ul class="role-pts">
+            <li>Orchestrated departmental functions including accreditation, grant management, consultancy projects, syllabus design, and placement activities</li>
+            <li>Crafted progressive curricula integrating Project Based Learning for Product Design, Product Development, 3D Printing, and CPI courses</li>
+            <li>Organized specialized sessions with experts to foster entrepreneurial and competitive acumen</li>
+            <li>Coordinated and conducted diverse YOGA activities at the university level</li>
+          </ul>
+        </div>
+
+        <div class="role-card">
+          <div class="role-header">
+            <div>
+              <div class="role-title">Associate Professor</div>
+              <div class="role-org">Mechanical Engineering Dept., RK University, Rajkot (Gujarat), India</div>
+              <div class="role-dur">December 15, 2017 – June 27, 2019 · 1 Year 6 Months</div>
+            </div>
+            <span class="role-badge rb-past">Past</span>
+          </div>
+          <ul class="role-pts">
+            <li>Applied inventive assessment techniques to Computer-Aided Design courses; activity-based learning for Computer Integrated Manufacturing</li>
+            <li>Led workshops on AutoCAD 2018 and Creo for staff and students</li>
+            <li>Pioneered a Product Design Club, fostering skill development and proactive mindset</li>
+            <li>Directed the Discipline Committee at university level; headed NAAC activities within the department</li>
+            <li>Initiated pilot study forming student group "TEJAS" to fulfil 12 Washington Accord attributes</li>
+          </ul>
+        </div>
+
+        <div class="role-card">
+          <div class="role-header">
+            <div>
+              <div class="role-title">Assistant Professor</div>
+              <div class="role-org">Mechanical Engineering Dept., RK University, Rajkot (Gujarat), India</div>
+              <div class="role-dur">June 14, 2008 – December 14, 2017 · 9 Years 6 Months</div>
+            </div>
+            <span class="role-badge rb-past">Past</span>
+          </div>
+          <ul class="role-pts">
+            <li>Departmental Research Coordinator; Audit team member for quality monitoring</li>
+            <li>Convener for national-level technical event "Technoplanet"</li>
+            <li>Managed CAD/CAM laboratory — server, user, security, and license management</li>
+            <li>Implemented OBE, Bloom's Taxonomy, Project-Based Learning, and LMS tools (Canvas, Edmodo)</li>
+            <li>Led extension activities focused on rural development</li>
+          </ul>
+        </div>
+
+        <div class="role-card">
+          <div class="role-header">
+            <div>
+              <div class="role-title">Lecturer</div>
+              <div class="role-org">V.V.P. Engineering College, Rajkot (Gujarat), India</div>
+              <div class="role-dur">January 4, 2008 – June 13, 2008 · 5 Months</div>
+            </div>
+            <span class="role-badge rb-past">Past</span>
+          </div>
+          <ul class="role-pts">
+            <li>Active participant in Student Help Desk for "Elements of Mechanical Engineering"</li>
+            <li>Contributed to achieving All-Up Target — zero student failures</li>
+          </ul>
+        </div>
+
+        <div class="role-card industry">
+          <div class="role-header">
+            <div>
+              <div class="role-title">Design Engineer</div>
+              <div class="role-org">Innovative Mould Works, Rajkot (Gujarat), India</div>
+              <div class="role-dur">January 11, 2007 – January 3, 2008 · 12 Months</div>
+            </div>
+            <span class="role-badge rb-industry">Industry</span>
+          </div>
+          <ul class="role-pts">
+            <li>Crafted intricate moulds for Investment Casting and Plastic Parts</li>
+            <li>Engineered patterns for Sand Casting processes; pioneered innovative product designs</li>
+            <li>Developed precision designs for Milling Fixtures; executed Reverse Engineering projects</li>
+            <li>Tools: Creo Parametric, AutoCAD, I-deas</li>
+          </ul>
+        </div>
+
+        <div class="role-card">
+          <div class="role-header">
+            <div>
+              <div class="role-title">Academic Head</div>
+              <div class="role-org">Shree Swaminarayan College of Computer Science, Bhavnagar (Gujarat), India</div>
+              <div class="role-dur">January 1, 2005 – January 10, 2007 · 2 Years</div>
+            </div>
+            <span class="role-badge rb-past">Past</span>
+          </div>
+          <ul class="role-pts">
+            <li>Spearheaded diverse academic initiatives elevating teaching-learning experience</li>
+            <li>Directed Students Placement and Industrial Liaison Cell</li>
+            <li>Managed Student Guidance and Counseling Cell</li>
+          </ul>
+        </div>
+
+        <div class="role-card">
+          <div class="role-header">
+            <div>
+              <div class="role-title">Lecturer</div>
+              <div class="role-org">Shree Swaminarayan College of Computer Science, Bhavnagar (Gujarat), India</div>
+              <div class="role-dur">January 15, 2001 – December 31, 2004 · 4 Years</div>
+            </div>
+            <span class="role-badge rb-past">Past</span>
+          </div>
+          <ul class="role-pts">
+            <li>Taught Mathematics, C-language, and Operations Research using case-based learning</li>
+            <li>Team leader for college team during Youth Festival and Annual Day Event</li>
+            <li>Member of Students' Guidance and Counseling Cell</li>
+          </ul>
+        </div>
+
+        <div class="role-card industry">
+          <div class="role-header">
+            <div>
+              <div class="role-title">Designer</div>
+              <div class="role-org">Jaivel Techno Service Pvt. Ltd., Rajkot (Gujarat), India</div>
+              <div class="role-dur">July 29, 1999 – March 14, 2000 · 7 Months</div>
+            </div>
+            <span class="role-badge rb-industry">Industry</span>
+          </div>
+          <ul class="role-pts">
+            <li>Crafted mould designs utilizing I-deas NX software</li>
+            <li>Operated 3-axis milling machines</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- EDUCATION -->
+      <div class="cv-section" id="education">
+        <h2>Education</h2>
+        <div style="margin-top:1rem;display:grid;gap:1rem">
+          <div class="role-card current">
+            <div class="role-title">Doctor of Philosophy (PhD)</div>
+            <div class="role-org">Mechanical Engineering · RK University, Rajkot (Gujarat), India</div>
+            <div class="role-dur">August 2017</div>
+            <p style="font-size:.82rem;color:var(--muted);margin-top:.5rem">Research: Design of Collet · Industry-funded · NAAC Accredited, NIRF Top 200</p>
+          </div>
+          <div class="role-card">
+            <div class="role-title">Master of Engineering (ME)</div>
+            <div class="role-org">Mechanical – Machine Design · Gujarat Technological University, Ahmedabad</div>
+            <div class="role-dur">May 2012 · GPA 3.55 / CPI 8.87 / 83.7%</div>
+            <p style="font-size:.82rem;color:var(--muted);margin-top:.5rem">Dissertation: Design of Modular Fixtures · Industry-funded</p>
+          </div>
+          <div class="role-card">
+            <div class="role-title">Master of Computer Applications (MCA)</div>
+            <div class="role-org">Indira Gandhi National Open University (IGNOU), Delhi</div>
+            <div class="role-dur">September 2009 · GPA 2.44 / 61%</div>
+          </div>
+          <div class="role-card">
+            <div class="role-title">Bachelor of Engineering (BE)</div>
+            <div class="role-org">Mechanical Engineering · Shantilal Shah Engineering College, Bhavnagar University</div>
+            <div class="role-dur">July 1999 · GPA 2.5 / 62.5%</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- AWARDS -->
+      <div class="cv-section" id="awards">
+        <h2>Awards & Recognition</h2>
+        <div style="margin-top:1rem;background:var(--white);border:1px solid var(--smoke);border-radius:calc(var(--r)*1.5);padding:1rem 1.5rem">
+          <div class="award-item">
+            <div class="award-icon">🏆</div>
+            <div><div class="award-title">Award of Excellence in Research</div><div class="award-sub">RK University · March 14, 2024</div></div>
+          </div>
+          <div class="award-item">
+            <div class="award-icon">🏆</div>
+            <div><div class="award-title">Award of Excellence in Research</div><div class="award-sub">RK University · March 24, 2023</div></div>
+          </div>
+          <div class="award-item">
+            <div class="award-icon">🏆</div>
+            <div><div class="award-title">Award of Excellence in Research + Award for Research Projects</div><div class="award-sub">RK University · March 24, 2022</div></div>
+          </div>
+          <div class="award-item">
+            <div class="award-icon">🥈</div>
+            <div><div class="award-title">Runner-Up — Inspire Faculty Excellence Award</div><div class="award-sub">INFOSYS, Pune · 2015 · Distinguished Facilitator category among 30 teams across India</div></div>
+          </div>
+          <div class="award-item">
+            <div class="award-icon">📄</div>
+            <div><div class="award-title">Best Paper Award — "Enhance Classroom Learning Using Innovative Teaching Method"</div><div class="award-sub">International Conference on Research & Entrepreneurship · RK University, January 2016</div></div>
+          </div>
+          <div class="award-item">
+            <div class="award-icon">📄</div>
+            <div><div class="award-title">Best Paper Presentation — "Simulation of Rubber Compression Moulding Machine"</div><div class="award-sub">International Conference IKRETS-2012 · G.K. Bharad Institute, Rajkot · March 2012</div></div>
+          </div>
+          <div class="award-item">
+            <div class="award-icon">🥇</div>
+            <div><div class="award-title">First Rank — "Experimental Method of Hydrogen Testing to Prevent HAC"</div><div class="award-sub">National Conference on Mechanical Engineering · Atmiya Institute, Rajkot · November 2008</div></div>
+          </div>
+          <div class="award-item">
+            <div class="award-icon">📄</div>
+            <div><div class="award-title">Best Paper Presentation — "Design & Manufacturing of 20-cylinder Hydraulic Fixture"</div><div class="award-sub">Team Tech 2008 · Indian Institute of Science, Bangalore · September 2008</div></div>
+          </div>
+          <div class="award-item">
+            <div class="award-icon">🔬</div>
+            <div><div class="award-title">Fellowship — Vikram Sarabhai Community Science Centre</div><div class="award-sub">INR 10,000 · Role as Mentor for PhD candidate — Senior Laureate 2nd Runner-Up · January 11, 2023</div></div>
+          </div>
+          <div class="award-item">
+            <div class="award-icon">🔬</div>
+            <div><div class="award-title">Research Fellowship</div><div class="award-sub">INR 1 Lakh · RK University · 2020–21 · Various innovative projects</div></div>
+          </div>
+          <div class="award-item">
+            <div class="award-icon">🌏</div>
+            <div><div class="award-title">International Conference Presentation — USA</div><div class="award-sub">ASME ECTC 2009 · University of Alabama, Tuscaloosa · Presented 2 research papers · 20-day US visit including university tours</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PROFESSIONAL MEMBERSHIPS -->
+      <div class="cv-section" id="memberships">
+        <h2>Professional Memberships</h2>
+        <div class="membership-grid" style="margin-top:1rem">
+          <div class="mem-card">
+            <div class="mem-icon">🏛️</div>
+            <div><div class="mem-name">Institution of Engineers India (IEI)</div><div class="mem-type">Associate Member · Kolkata</div></div>
+          </div>
+          <div class="mem-card">
+            <div class="mem-icon">🌐</div>
+            <div><div class="mem-name">International Association of Engineers (IAENG)</div><div class="mem-type">Member</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- EDITORIAL ROLES -->
+      <div class="cv-section" id="editorial">
+        <h2>Editorial & Reviewer Roles</h2>
+        <p style="font-size:.83rem;color:var(--muted);margin:.75rem 0 1rem">Active reviewer and editorial board member for multiple international journals and conferences.</p>
+        <div style="background:var(--white);border:1px solid var(--smoke);border-radius:calc(var(--r)*1.5);padding:1rem 1.5rem">
+          <div class="ed-item"><strong>Editor-in-Chief</strong> — Journal of Advancement in Machines (International Journal)</div>
+          <div class="ed-item"><strong>Editor</strong> — Trends in Machine Design, STM Publication (eISSN: 2455-3352)</div>
+          <div class="ed-item"><strong>Editorial Board Member</strong> — American Journal of Mechanical and Industrial Engineering (eISSN: 2575-6060)</div>
+          <div class="ed-item"><strong>Editorial Board</strong> — ASME ECTC (Early Career Technical Conference), University of Alabama Birmingham, 2016, 2017, 2018, 2019</div>
+          <div class="ed-item"><strong>Editorial Board Member</strong> — Splendid Journals Reviewer Board</div>
+          <div class="ed-item"><strong>Reviewer</strong> — Advanced Engineering Forum (ISSN: 2234-991X)</div>
+          <div class="ed-item"><strong>Reviewer</strong> — Applied Mechanics and Materials (ISSN: 1662-7482)</div>
+          <div class="ed-item"><strong>Reviewer</strong> — Key Engineering Materials (ISSN: 1662-9795)</div>
+          <div class="ed-item"><strong>Reviewer</strong> — Jurnal Kejuruteraan (Journal of Engineering), IKM Press, Malaysia</div>
+          <div class="ed-item"><strong>Reviewer</strong> — IRE Iconic Research and Engineering Journals</div>
+          <div class="ed-item"><strong>Review Committee</strong> — ICSET 2022, RK University (AICTE-Funded, AIP/Scopus)</div>
+          <div class="ed-item"><strong>Review Committee</strong> — ICTIEE 2017 & 2018, IUCEE</div>
+          <div class="ed-item"><strong>Review Committee</strong> — International Conference on Emerging Trends, Atmiya University 2022</div>
+          <div class="ed-item"><strong>Reviewer</strong> — Online National Conference DICE-2021, PSIT College of Engineering, Kanpur</div>
+        </div>
+      </div>
+
+      <!-- EXTENSION ACTIVITIES -->
+      <div class="cv-section" id="extension">
+        <h2>Extension & Community Activities</h2>
+        <div style="background:var(--white);border:1px solid var(--smoke);border-radius:calc(var(--r)*1.5);padding:1rem 1.5rem;margin-top:1rem">
+          <div class="award-item">
+            <div class="award-icon">🧘</div>
+            <div><div class="award-title">Yoga Coordination</div><div class="award-sub">Coordinating YOGA activities and training for University Staff and Students at university level</div></div>
+          </div>
+          <div class="award-item">
+            <div class="award-icon">🌟</div>
+            <div><div class="award-title">Spiritual Development Center</div><div class="award-sub">Conducting Spiritual Development Center for Youth & Kids</div></div>
+          </div>
+          <div class="award-item">
+            <div class="award-icon">⛺</div>
+            <div><div class="award-title">Youth Shibir/Retreat</div><div class="award-sub">Conducting Shibir/Retreat programs for kids and Youth</div></div>
+          </div>
+          <div class="award-item">
+            <div class="award-icon">🏘️</div>
+            <div><div class="award-title">Rural Extension Activities</div><div class="award-sub">Conducting rural extension activities for community development</div></div>
+          </div>
+          <div class="award-item">
+            <div class="award-icon">🤖</div>
+            <div><div class="award-title">Saturday Kids Robotics Workshop</div><div class="award-sub">Weekly hands-on robotics workshops for school children · Running since 2023 · 20–30 participants per session</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PERSONAL DETAILS -->
+      <div class="cv-section" id="personal">
+        <h2>Personal Details</h2>
+        <div class="personal-grid" style="margin-top:1rem">
+          <div class="pers-item"><div class="pers-label">Date of Birth</div><div class="pers-val">28th June 1978</div></div>
+          <div class="pers-item"><div class="pers-label">Nationality</div><div class="pers-val">Indian</div></div>
+          <div class="pers-item"><div class="pers-label">Gender & Marital Status</div><div class="pers-val">Male · Married</div></div>
+          <div class="pers-item"><div class="pers-label">Languages</div><div class="pers-val">Gujarati · Hindi · English</div></div>
+          <div class="pers-item"><div class="pers-label">Address</div><div class="pers-val">"Akshardham", 1 Milapnagar, University Road, Rajkot, Gujarat, India</div></div>
+          <div class="pers-item"><div class="pers-label">Scopus ID</div><div class="pers-val">57213766474</div></div>
+        </div>
+        <div style="margin-top:1rem">
+          <p style="font-size:.8rem;color:var(--muted);margin-bottom:.5rem">Interests & activities:</p>
+          <div style="display:flex;flex-wrap:wrap;gap:.4rem">
+            <span class="pill pill-warm">Spiritual Practice</span>
+            <span class="pill pill-warm">Exploring New Places</span>
+            <span class="pill pill-warm">Meeting People</span>
+            <span class="pill pill-warm">Yoga & Meditation</span>
+            <span class="pill pill-warm">Teaching Pedagogy</span>
+            <span class="pill pill-warm">Project Based Teaching</span>
+            <span class="pill pill-warm">Research</span>
+            <span class="pill pill-warm">Counselling & Mentoring</span>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /cv-main -->
+  </div><!-- /cv-layout -->
+</section>
+
+<footer>© 2026 Dr. Chetankumar Patel · Professor, RK University, Rajkot · Academic Portfolio</footer>
+
+<script>
+// Sidebar active state on scroll
+const sections = document.querySelectorAll('.cv-section');
+const navItems = document.querySelectorAll('.sn-item');
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      navItems.forEach(n => n.classList.remove('active'));
+      const active = document.querySelector(`.sn-item[href="#${e.target.id}"]`);
+      if (active) active.classList.add('active');
+    }
+  });
+}, { rootMargin: '-30% 0px -60% 0px' });
+sections.forEach(s => obs.observe(s));
+
+// Reveal
+const revObs = new IntersectionObserver(entries => {
+  entries.forEach((e,i) => { if(e.isIntersecting){ setTimeout(()=>e.target.classList.add('visible'),i*60); revObs.unobserve(e.target); }});
+}, {threshold:0.08});
+document.querySelectorAll('.reveal').forEach(el => revObs.observe(el));
+</script>
+</body>
+</html>

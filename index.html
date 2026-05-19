@@ -6,80 +6,83 @@
 <title>Dr. Chetankumar Patel — Academic Portfolio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 <style>
-:root{
-  --navy:#1B3A6B;--gold:#C8972B;--gold2:#E8B84B;
-  --cream:#FAF7F2;--warm:#F2EDE4;--smoke:#E8E2D8;
-  --ink:#1A1410;--muted:#6B6359;--light:#A89F94;--white:#FFFFFF;
-  --green:#2E7D32;--blue:#1565C0;--amber:#8D6E18;--red:#991B1B;
-  --purple:#6B21A8;--teal:#0F766E;
-  --r:.75rem;
-}
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);line-height:1.6;overflow-x:hidden}
-
-/* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:.85rem 3rem;background:rgba(250,247,242,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--smoke)}
-.nav-logo{font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:600;color:var(--navy)}
-.nav-links{display:flex;gap:1.75rem;list-style:none}
-.nav-links a{font-size:.75rem;font-weight:500;color:var(--muted);text-decoration:none;letter-spacing:.06em;text-transform:uppercase;transition:color .2s}
-.nav-links a:hover{color:var(--navy)}
-
-/* HERO */
-.hero{position:relative;min-height:92vh;display:flex;align-items:center;padding:8rem 3rem 4rem;background:linear-gradient(135deg,var(--navy) 0%,#0F2244 65%,#162f5e 100%);overflow:hidden}
+/* ── PAGE-SPECIFIC ── */
+.hero{position:relative;min-height:96vh;display:flex;align-items:center;padding:8rem 3rem 4rem;background:linear-gradient(135deg,var(--navy) 0%,#0F2244 65%,#162f5e 100%);overflow:hidden}
 .hero::before{content:'';position:absolute;top:-20%;right:-10%;width:55vw;height:55vw;border:1px solid rgba(200,151,43,.1);border-radius:50%}
+.hero::after{content:'';position:absolute;bottom:-25%;left:-8%;width:40vw;height:40vw;border:1px solid rgba(200,151,43,.06);border-radius:50%}
 .hero-inner{position:relative;z-index:2;max-width:860px}
 .eyebrow{font-family:'DM Mono',monospace;font-size:.72rem;color:var(--gold2);letter-spacing:.15em;text-transform:uppercase;margin-bottom:1.4rem;opacity:0;animation:fadeUp .6s .1s forwards}
 .hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,6vw,5rem);font-weight:700;line-height:1.05;color:var(--white);margin-bottom:.4rem;opacity:0;animation:fadeUp .7s .2s forwards}
-.hero h1 span{color:var(--gold2)}
-.hero-sub{font-size:.92rem;font-weight:300;color:rgba(255,255,255,.55);margin-bottom:2.5rem;opacity:0;animation:fadeUp .7s .3s forwards}
+.hero h1 em{color:var(--gold2);font-style:normal}
+.hero-title{font-size:.92rem;font-weight:300;color:rgba(255,255,255,.55);margin-bottom:2.5rem;opacity:0;animation:fadeUp .7s .3s forwards}
 .hero-stats{display:flex;flex-wrap:wrap;gap:.75rem;margin-bottom:2.8rem;opacity:0;animation:fadeUp .7s .4s forwards}
-.stat{background:rgba(255,255,255,.07);border:1px solid rgba(200,151,43,.22);border-radius:var(--r);padding:.85rem 1.25rem;text-align:center;min-width:90px}
-.stat-n{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:700;color:var(--gold2);line-height:1}
-.stat-l{font-size:.62rem;color:rgba(255,255,255,.45);margin-top:.2rem;letter-spacing:.08em;text-transform:uppercase}
 .hero-cta{display:flex;gap:1rem;flex-wrap:wrap;opacity:0;animation:fadeUp .7s .5s forwards}
-.btn{display:inline-flex;align-items:center;gap:.4rem;padding:.7rem 1.5rem;border-radius:var(--r);font-size:.82rem;font-weight:500;text-decoration:none;cursor:pointer;border:none;transition:all .2s}
-.btn-gold{background:var(--gold);color:var(--white)}
-.btn-gold:hover{background:var(--gold2);transform:translateY(-2px);box-shadow:0 8px 24px rgba(200,151,43,.35)}
-.btn-ghost{background:transparent;color:rgba(255,255,255,.75);border:1px solid rgba(255,255,255,.22)}
-.btn-ghost:hover{border-color:var(--gold2);color:var(--gold2);transform:translateY(-2px)}
 
-/* SECTIONS */
-section{position:relative;z-index:1;padding:4.5rem 3rem}
-.wrap{max-width:1100px;margin:0 auto}
-.stag{font-family:'DM Mono',monospace;font-size:.68rem;color:var(--gold);letter-spacing:.15em;text-transform:uppercase;margin-bottom:.6rem}
-.sh{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3.5vw,2.6rem);font-weight:700;color:var(--navy);margin-bottom:.75rem;line-height:1.15}
-.ss{font-size:.9rem;color:var(--muted);max-width:580px;margin-bottom:2.5rem}
+/* PROFILE SUMMARY */
+#summary{background:var(--white)}
+.summary-grid{display:grid;grid-template-columns:1fr 2fr;gap:3rem;align-items:start}
+.summary-portrait{background:linear-gradient(135deg,var(--navy) 0%,#2a5298 100%);border-radius:calc(var(--r)*2);aspect-ratio:3/4;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.3);font-size:4rem;max-width:280px}
+.summary-content{}
+.summary-text{font-size:.93rem;color:var(--ink);line-height:1.75;margin-bottom:1.5rem}
+.quick-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem;margin-bottom:1.5rem}
+.q-stat{background:var(--warm);border-radius:var(--r);padding:.85rem 1rem;text-align:center}
+.q-n{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:700;color:var(--navy);line-height:1}
+.q-l{font-size:.65rem;color:var(--muted);margin-top:.15rem;letter-spacing:.07em;text-transform:uppercase}
+.contact-row{display:flex;flex-wrap:wrap;gap:.6rem}
+.contact-chip{display:inline-flex;align-items:center;gap:.4rem;font-size:.78rem;color:var(--muted);text-decoration:none;background:var(--warm);border:1px solid var(--smoke);border-radius:var(--r);padding:.4rem .85rem;transition:all .15s}
+.contact-chip:hover{border-color:var(--navy);color:var(--navy)}
 
-/* CATEGORY PILLS */
-.cat-row{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:2rem}
-.cat-pill{display:inline-flex;align-items:center;gap:.4rem;font-size:.76rem;font-weight:500;padding:.4rem .9rem;border-radius:20px;cursor:pointer;transition:all .15s;border:1px solid var(--smoke);background:var(--white);color:var(--muted)}
-.cat-pill:hover{border-color:var(--navy);color:var(--navy)}
-.cat-pill.active{color:var(--white);border-color:transparent}
-.cat-pill .dot{width:7px;height:7px;border-radius:50%;background:currentColor;opacity:.7}
+/* EDUCATION */
+#education{background:var(--warm)}
+.edu-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1rem}
+.edu-card{background:var(--white);border:1px solid var(--smoke);border-radius:calc(var(--r)*1.5);padding:1.35rem;border-left:3px solid var(--navy)}
+.edu-degree{font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-weight:700;color:var(--navy);margin-bottom:.2rem;line-height:1.3}
+.edu-field{font-size:.78rem;color:var(--muted);margin-bottom:.5rem}
+.edu-inst{font-size:.82rem;color:var(--ink);font-weight:500;margin-bottom:.2rem}
+.edu-year{font-family:'DM Mono',monospace;font-size:.72rem;color:var(--light)}
+.edu-score{font-size:.75rem;color:var(--muted);margin-top:.4rem}
 
-/* Category colours */
-.cat-workshop{--cc:#6B21A8}.cat-talk{--cc:#0F766E}.cat-industry{--cc:#1565C0}.cat-counselling{--cc:#2E7D32}.cat-event{--cc:#C8972B}.cat-research{--cc:#991B1B}.cat-other{--cc:#6B6359}
-.cat-pill.active{background:var(--cc)}
+/* EXPERIENCE SUMMARY ON HOME */
+#experience{background:var(--cream)}
+.exp-summary-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem}
+.exp-card{background:var(--white);border:1px solid var(--smoke);border-radius:calc(var(--r)*1.5);padding:1.25rem}
+.exp-title{font-size:.92rem;font-weight:500;color:var(--navy);margin-bottom:.15rem}
+.exp-org{font-size:.78rem;color:var(--muted);margin-bottom:.4rem}
+.exp-dur{font-family:'DM Mono',monospace;font-size:.7rem;color:var(--light)}
+
+/* SKILLS */
+#skills{background:var(--navy)}
+#skills .sh{color:var(--white)}
+#skills .stag{color:var(--gold2)}
+#skills .ss{color:rgba(255,255,255,.45)}
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1px;background:rgba(255,255,255,.08);border-radius:var(--r);overflow:hidden}
+.skill-group{background:rgba(255,255,255,.04);padding:1.4rem;transition:background .2s}
+.skill-group:hover{background:rgba(255,255,255,.08)}
+.sg-title{font-size:.78rem;font-weight:500;color:var(--gold2);letter-spacing:.08em;text-transform:uppercase;margin-bottom:.85rem}
+.skill-tag{display:inline-block;font-size:.73rem;padding:.25rem .6rem;border-radius:20px;background:rgba(255,255,255,.08);color:rgba(255,255,255,.7);margin:.2rem .2rem 0 0;border:1px solid rgba(255,255,255,.12);transition:all .15s}
+.skill-tag:hover{background:rgba(200,151,43,.2);border-color:rgba(200,151,43,.4);color:var(--gold2)}
 
 /* ACTIVITY FEED */
-.feed{display:flex;flex-direction:column;gap:0}
-.feed-item{display:flex;gap:1.25rem;padding:1.1rem 0;border-bottom:1px solid var(--smoke);position:relative;transition:opacity .2s}
+.cat-row{display:flex;flex-wrap:wrap;gap:.45rem;margin-bottom:2rem}
+.cat-pill{display:inline-flex;align-items:center;gap:.4rem;font-size:.76rem;font-weight:500;padding:.38rem .9rem;border-radius:20px;cursor:pointer;transition:all .15s;border:1px solid var(--smoke);background:var(--white);color:var(--muted)}
+.cat-pill:hover{border-color:var(--navy);color:var(--navy)}
+.cat-pill.active{color:var(--white);border-color:transparent;background:var(--navy)}
+.feed{display:flex;flex-direction:column}
+.feed-item{display:flex;gap:1.25rem;padding:1.1rem 0;border-bottom:1px solid var(--smoke)}
 .feed-item.hidden{display:none}
 .feed-left{display:flex;flex-direction:column;align-items:center;gap:.3rem;min-width:52px}
 .feed-date{font-family:'DM Mono',monospace;font-size:.65rem;color:var(--light);text-align:center;line-height:1.3}
 .feed-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;margin-top:2px}
 .feed-line{flex:1;width:1px;background:var(--smoke)}
 .feed-body{flex:1;padding-bottom:.25rem}
-.feed-tag{display:inline-flex;align-items:center;gap:.3rem;font-size:.65rem;font-weight:500;padding:.15rem .6rem;border-radius:20px;margin-bottom:.4rem;text-transform:uppercase;letter-spacing:.04em}
+.feed-tag{display:inline-flex;align-items:center;font-size:.65rem;font-weight:500;padding:.15rem .6rem;border-radius:20px;margin-bottom:.4rem;text-transform:uppercase;letter-spacing:.04em}
 .feed-title{font-size:.92rem;font-weight:500;color:var(--ink);margin-bottom:.25rem;line-height:1.4}
 .feed-desc{font-size:.82rem;color:var(--muted);line-height:1.5}
-.feed-meta{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.5rem}
+.feed-meta{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.5rem}
 .feed-chip{font-size:.68rem;padding:.15rem .55rem;border-radius:20px;background:var(--warm);color:var(--muted);border:1px solid var(--smoke)}
-
-/* Category colour assignments */
 .c-workshop{background:rgba(107,33,168,.08);color:#6B21A8;border:1px solid rgba(107,33,168,.2)}
 .c-talk{background:rgba(15,118,110,.08);color:#0F766E;border:1px solid rgba(15,118,110,.2)}
 .c-industry{background:rgba(21,101,192,.08);color:#1565C0;border:1px solid rgba(21,101,192,.2)}
@@ -87,13 +90,8 @@ section{position:relative;z-index:1;padding:4.5rem 3rem}
 .c-event{background:rgba(200,151,43,.1);color:#8D6E18;border:1px solid rgba(200,151,43,.25)}
 .c-research{background:rgba(153,27,27,.08);color:#991B1B;border:1px solid rgba(153,27,27,.2)}
 .c-other{background:var(--warm);color:var(--muted);border:1px solid var(--smoke)}
-.dot-workshop{background:#6B21A8}
-.dot-talk{background:#0F766E}
-.dot-industry{background:#1565C0}
-.dot-counselling{background:#2E7D32}
-.dot-event{background:#C8972B}
-.dot-research{background:#991B1B}
-.dot-other{background:#A89F94}
+.dot-workshop{background:#6B21A8}.dot-talk{background:#0F766E}.dot-industry{background:#1565C0}
+.dot-counselling{background:#2E7D32}.dot-event{background:#C8972B}.dot-research{background:#991B1B}.dot-other{background:#A89F94}
 
 /* PROJECTS */
 #projects{background:var(--warm)}
@@ -114,60 +112,222 @@ section{position:relative;z-index:1;padding:4.5rem 3rem}
 .ps-commercialized{background:#fff8e1;color:#7B5800;border:1px solid #ffd54f}
 .proj-arrow{font-size:.78rem;color:var(--gold);font-weight:500;margin-top:.75rem;display:flex;align-items:center;gap:.3rem}
 
+/* PATENTS CTA */
+#patents-cta{background:var(--navy);text-align:center}
+#patents-cta .sh{color:var(--white)}
+#patents-cta .stag{color:var(--gold2)}
+
 /* CONTACT */
-#contact{background:var(--navy);text-align:center}
+#contact{background:linear-gradient(135deg,var(--navy) 0%,#0F2244 100%);text-align:center}
 #contact .sh{color:var(--white)}
 #contact .stag{color:var(--gold2)}
 #contact .ss{color:rgba(255,255,255,.45);margin:0 auto 2.2rem}
 .chips{display:flex;flex-wrap:wrap;gap:.85rem;justify-content:center}
 .chip{display:inline-flex;align-items:center;gap:.5rem;background:rgba(255,255,255,.07);border:1px solid rgba(200,151,43,.22);border-radius:var(--r);padding:.65rem 1.1rem;color:rgba(255,255,255,.75);font-size:.83rem;text-decoration:none;transition:all .2s}
 .chip:hover{background:rgba(200,151,43,.15);border-color:var(--gold2);color:var(--white);transform:translateY(-2px)}
-
-footer{background:#0D1F3C;padding:1.4rem 3rem;text-align:center;font-size:.72rem;color:rgba(255,255,255,.28)}
-
-/* ANIMATIONS */
-@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
-.reveal{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease}
-.reveal.visible{opacity:1;transform:translateY(0)}
-
-/* RESPONSIVE */
-@media(max-width:768px){
-  nav{padding:.7rem 1.2rem}
-  .nav-links{display:none}
-  section{padding:3rem 1.2rem}
-  .hero{padding:5.5rem 1.2rem 3rem}
-  .stat-n{font-size:1.5rem}
-}
 </style>
 </head>
 <body>
 
+<!-- NAV -->
 <nav>
-  <div class="nav-logo">Dr. Chetankumar Patel</div>
+  <a href="index.html" class="nav-brand">Dr. Chetankumar Patel</a>
   <ul class="nav-links">
-    <li><a href="#activities">Activities</a></li>
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#patents">Patents</a></li>
-    <li><a href="#contact">Contact</a></li>
+    <li><a href="index.html" class="active">Home</a></li>
+    <li><a href="about.html">About & CV</a></li>
+    <li><a href="research.html">Research</a></li>
+    <li><a href="patent-portfolio.html">Patents</a></li>
+    <li><a href="index.html#projects">Projects</a></li>
+    <li><a href="index.html#activities">Activities</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
   </ul>
 </nav>
 
 <!-- HERO -->
 <section class="hero" id="home">
   <div class="hero-inner">
-    <p class="eyebrow">Academic · Inventor · Mentor · May 2026</p>
-    <h1>Dr. Chetankumar Patel<br><span>PhD · Associate Professor &amp; Head</span></h1>
-    <p class="hero-sub">School of Engineering · RK University, Rajkot, India</p>
+    <p class="eyebrow">Academic · Inventor · Author · Mentor · May 2026</p>
+    <h1>Dr. Chetankumar Patel<br><em>PhD · Professor · Innovator</em></h1>
+    <p class="hero-title">School of Engineering · RK University, Rajkot, India &nbsp;|&nbsp; 23+ Years Academic Experience</p>
     <div class="hero-stats">
-      <div class="stat"><div class="stat-n">19</div><div class="stat-l">Patents</div></div>
-      <div class="stat"><div class="stat-n">3</div><div class="stat-l">Granted</div></div>
-      <div class="stat"><div class="stat-n">6+</div><div class="stat-l">Govt Grants</div></div>
-      <div class="stat"><div class="stat-n">200+</div><div class="stat-l">Activities</div></div>
-      <div class="stat"><div class="stat-n">15+</div><div class="stat-l">Projects</div></div>
+      <div class="stat-box dark"><div class="stat-n">23+</div><div class="stat-l">Yrs Experience</div></div>
+      <div class="stat-box dark"><div class="stat-n">19</div><div class="stat-l">Patents</div></div>
+      <div class="stat-box dark"><div class="stat-n">80</div><div class="stat-l">Publications</div></div>
+      <div class="stat-box dark"><div class="stat-n">3</div><div class="stat-l">Books</div></div>
+      <div class="stat-box dark"><div class="stat-n">5</div><div class="stat-l">PhD Guided</div></div>
+      <div class="stat-box dark"><div class="stat-n">₹37L+</div><div class="stat-l">Grants Received</div></div>
     </div>
     <div class="hero-cta">
-      <a href="#activities" class="btn btn-gold">View Activity Log ↓</a>
-      <a href="patent-portfolio.html" class="btn btn-ghost">Patent Portfolio →</a>
+      <a href="about.html" class="btn btn-gold">Full CV & Profile →</a>
+      <a href="research.html" class="btn btn-ghost">Research & Publications</a>
+      <a href="patent-portfolio.html" class="btn btn-ghost">Patent Portfolio</a>
+    </div>
+  </div>
+</section>
+
+<!-- PROFILE SUMMARY -->
+<section id="summary">
+  <div class="wrap">
+    <div class="summary-grid reveal">
+      <div>
+        <div class="summary-portrait">👤</div>
+        <p style="font-size:.72rem;color:var(--light);margin-top:.75rem;text-align:center">Add your photo — replace this placeholder<br>with an &lt;img&gt; tag</p>
+      </div>
+      <div class="summary-content">
+        <span class="stag">Profile Summary</span>
+        <h2 class="sh">Academic Leader &amp; Inventor</h2>
+        <p class="summary-text">Academic leader and Professor with <strong>23+ years of experience in Higher Education</strong> and 2 years of industry exposure, demonstrating strong capabilities in academic governance, teaching–learning innovation, research coordination, and quality assurance. Proven expertise in academic planning, curriculum design, and Outcome-Based Education (OBE).</p>
+        <p class="summary-text">Led a robust research and innovation ecosystem with <strong>30+ funded projects, 19 patents, and 80 research publications</strong>, promoting IPR generation, applied research, and industry-aligned outcomes. Experienced in faculty mentoring, doctoral guidance, startup nurturing, and interdisciplinary collaboration. Authored three books reflecting a systems-driven approach to academic excellence.</p>
+        <div class="quick-stats">
+          <div class="q-stat"><div class="q-n">80</div><div class="q-l">Publications</div></div>
+          <div class="q-stat"><div class="q-n">13</div><div class="q-l">PhD Guided/Ongoing</div></div>
+          <div class="q-stat"><div class="q-n">₹37L+</div><div class="q-l">Grants Received</div></div>
+        </div>
+        <div class="contact-row">
+          <a href="mailto:chetanpatel.mech@gmail.com" class="contact-chip">✉ chetanpatel.mech@gmail.com</a>
+          <a href="tel:+919879002288" class="contact-chip">📞 +91 9879002288</a>
+          <a href="https://linkedin.com/in/chetanmpatel/" class="contact-chip" target="_blank">💼 LinkedIn</a>
+          <a href="https://scholar.google.com/citations?user=GGLEzugAAAAJ" class="contact-chip" target="_blank">🎓 Google Scholar</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="wrap">
+    <span class="stag reveal">Academic Formation</span>
+    <h2 class="sh reveal">Education</h2>
+    <div class="edu-grid reveal">
+      <div class="edu-card" style="border-left-color:var(--gold)">
+        <div class="edu-degree">Doctor of Philosophy</div>
+        <div class="edu-field">Mechanical Engineering</div>
+        <div class="edu-inst">RK University, Rajkot, Gujarat</div>
+        <div class="edu-year">August 2017</div>
+        <div class="edu-score">Research: Design of Collet (Industry-funded)</div>
+      </div>
+      <div class="edu-card">
+        <div class="edu-degree">Master of Engineering</div>
+        <div class="edu-field">Mechanical – Machine Design</div>
+        <div class="edu-inst">Gujarat Technological University, Ahmedabad</div>
+        <div class="edu-year">May 2012</div>
+        <div class="edu-score">GPA 8.87 · 83.7% · Dissertation: Modular Fixtures (Industry-funded)</div>
+      </div>
+      <div class="edu-card">
+        <div class="edu-degree">Master of Computer Applications</div>
+        <div class="edu-field">MCA</div>
+        <div class="edu-inst">IGNOU, Delhi</div>
+        <div class="edu-year">September 2009</div>
+        <div class="edu-score">61%</div>
+      </div>
+      <div class="edu-card">
+        <div class="edu-degree">Bachelor of Engineering</div>
+        <div class="edu-field">Mechanical Engineering</div>
+        <div class="edu-inst">SSEC, Bhavnagar University</div>
+        <div class="edu-year">July 1999</div>
+        <div class="edu-score">62.5%</div>
+      </div>
+    </div>
+    <div style="margin-top:1.25rem;text-align:right">
+      <a href="about.html#experience" class="btn btn-outline" style="font-size:.8rem">View full experience & roles →</a>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE SUMMARY -->
+<section id="experience">
+  <div class="wrap">
+    <span class="stag reveal">Career Journey</span>
+    <h2 class="sh reveal">Academic &amp; Professional Experience</h2>
+    <p class="ss reveal">23 years in higher education across multiple institutions, plus 2 years of industry exposure in design and manufacturing.</p>
+    <div class="exp-summary-grid reveal">
+      <div class="exp-card" style="border-left:3px solid var(--gold)">
+        <div class="exp-title">Professor</div>
+        <div class="exp-org">RK University, School of Engineering</div>
+        <div class="exp-dur">Jan 2025 – Present · 1 Year</div>
+      </div>
+      <div class="exp-card" style="border-left:3px solid var(--navy)">
+        <div class="exp-title">Professor &amp; Head</div>
+        <div class="exp-org">RK University, Mech. Engineering Dept.</div>
+        <div class="exp-dur">Sep 2020 – Dec 2024 · 4 Years 4 Months</div>
+      </div>
+      <div class="exp-card" style="border-left:3px solid var(--blue)">
+        <div class="exp-title">Associate Professor &amp; Head</div>
+        <div class="exp-org">RK University</div>
+        <div class="exp-dur">Jun 2019 – Aug 2020 · 1 Year 2 Months</div>
+      </div>
+      <div class="exp-card" style="border-left:3px solid var(--blue)">
+        <div class="exp-title">Associate Professor</div>
+        <div class="exp-org">RK University</div>
+        <div class="exp-dur">Dec 2017 – Jun 2019 · 1 Year 6 Months</div>
+      </div>
+      <div class="exp-card" style="border-left:3px solid var(--muted)">
+        <div class="exp-title">Assistant Professor</div>
+        <div class="exp-org">RK University</div>
+        <div class="exp-dur">Jun 2008 – Dec 2017 · 9 Years 6 Months</div>
+      </div>
+      <div class="exp-card" style="border-left:3px solid var(--green)">
+        <div class="exp-title">Design Engineer</div>
+        <div class="exp-org">Innovative Mould Works, Rajkot</div>
+        <div class="exp-dur">Jan 2007 – Jan 2008 · 12 Months</div>
+      </div>
+    </div>
+    <div style="margin-top:1.5rem;text-align:right">
+      <a href="about.html" class="btn btn-outline" style="font-size:.8rem">Full CV with all roles, awards &amp; memberships →</a>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="wrap">
+    <span class="stag reveal">Expertise</span>
+    <h2 class="sh reveal">Skills &amp; Competencies</h2>
+    <p class="ss reveal">Spanning technical design tools, pedagogy, research, and leadership.</p>
+    <div class="skills-grid reveal">
+      <div class="skill-group">
+        <div class="sg-title">Design & Engineering</div>
+        <span class="skill-tag">Creo Parametric</span>
+        <span class="skill-tag">AutoCAD 2D/3D</span>
+        <span class="skill-tag">ANSYS</span>
+        <span class="skill-tag">CNC Programming</span>
+        <span class="skill-tag">3D Printing / Cura</span>
+        <span class="skill-tag">Industrial Product Design</span>
+        <span class="skill-tag">FEA</span>
+        <span class="skill-tag">Fusion 360</span>
+      </div>
+      <div class="skill-group">
+        <div class="sg-title">Teaching & Pedagogy</div>
+        <span class="skill-tag">Outcome-Based Education</span>
+        <span class="skill-tag">Problem-Based Learning</span>
+        <span class="skill-tag">Project-Based Learning</span>
+        <span class="skill-tag">Blended Learning</span>
+        <span class="skill-tag">Canvas LMS</span>
+        <span class="skill-tag">Bloom's Taxonomy</span>
+        <span class="skill-tag">Curriculum Design</span>
+        <span class="skill-tag">NAAC / NIRF</span>
+      </div>
+      <div class="skill-group">
+        <div class="sg-title">Research & Innovation</div>
+        <span class="skill-tag">Patent Filing & IPR</span>
+        <span class="skill-tag">Technology Transfer</span>
+        <span class="skill-tag">Grant Writing</span>
+        <span class="skill-tag">PhD Supervision</span>
+        <span class="skill-tag">Design Thinking</span>
+        <span class="skill-tag">Startup Mentoring</span>
+        <span class="skill-tag">Research Coordination</span>
+      </div>
+      <div class="skill-group">
+        <div class="sg-title">Leadership & Management</div>
+        <span class="skill-tag">Academic Governance</span>
+        <span class="skill-tag">Department Head</span>
+        <span class="skill-tag">NAAC Coordination</span>
+        <span class="skill-tag">Board of Studies</span>
+        <span class="skill-tag">Faculty Mentoring</span>
+        <span class="skill-tag">Student Counselling</span>
+        <span class="skill-tag">Accreditation</span>
+      </div>
     </div>
   </div>
 </section>
@@ -175,25 +335,19 @@ footer{background:#0D1F3C;padding:1.4rem 3rem;text-align:center;font-size:.72rem
 <!-- ACTIVITY LOG -->
 <section id="activities" style="background:var(--cream)">
   <div class="wrap">
-    <p class="stag reveal">Professional Activity Log</p>
+    <span class="stag reveal">Professional Activity Log</span>
     <h2 class="sh reveal">What I Do Every Week</h2>
-    <p class="ss reveal">A running record of workshops, talks, industry visits, counselling sessions, events, and research activities — things that matter but often go unrecorded.</p>
-
-    <!-- Category Filter -->
-    <div class="cat-row reveal" id="catRow">
-      <button class="cat-pill active" data-cat="all" onclick="filterFeed('all',this)"><span class="dot"></span>All Activities</button>
-      <button class="cat-pill cat-workshop" data-cat="workshop" onclick="filterFeed('workshop',this)" style="--cc:#6B21A8"><span class="dot"></span>Workshops</button>
-      <button class="cat-pill cat-talk" data-cat="talk" onclick="filterFeed('talk',this)" style="--cc:#0F766E"><span class="dot"></span>Expert Talks</button>
-      <button class="cat-pill cat-industry" data-cat="industry" onclick="filterFeed('industry',this)" style="--cc:#1565C0"><span class="dot"></span>Industry Visits</button>
-      <button class="cat-pill cat-counselling" data-cat="counselling" onclick="filterFeed('counselling',this)" style="--cc:#2E7D32"><span class="dot"></span>Counselling</button>
-      <button class="cat-pill cat-event" data-cat="event" onclick="filterFeed('event',this)" style="--cc:#C8972B"><span class="dot"></span>Events</button>
-      <button class="cat-pill cat-research" data-cat="research" onclick="filterFeed('research',this)" style="--cc:#991B1B"><span class="dot"></span>Research</button>
+    <p class="ss reveal">A running record of workshops, talks, industry visits, counselling sessions, events, and research activities.</p>
+    <div class="cat-row reveal">
+      <button class="cat-pill active" onclick="filterFeed('all',this)">All Activities</button>
+      <button class="cat-pill" onclick="filterFeed('workshop',this)" style="--cc:#6B21A8">Workshops</button>
+      <button class="cat-pill" onclick="filterFeed('talk',this)" style="--cc:#0F766E">Expert Talks</button>
+      <button class="cat-pill" onclick="filterFeed('industry',this)" style="--cc:#1565C0">Industry Visits</button>
+      <button class="cat-pill" onclick="filterFeed('counselling',this)" style="--cc:#2E7D32">Counselling</button>
+      <button class="cat-pill" onclick="filterFeed('event',this)" style="--cc:#C8972B">Events</button>
+      <button class="cat-pill" onclick="filterFeed('research',this)" style="--cc:#991B1B">Research</button>
     </div>
-
-    <!-- Feed -->
     <div class="feed reveal" id="activityFeed"></div>
-
-    <!-- Load more hint -->
     <p style="font-size:.8rem;color:var(--light);margin-top:1.5rem;text-align:center" id="feedHint"></p>
   </div>
 </section>
@@ -201,106 +355,78 @@ footer{background:#0D1F3C;padding:1.4rem 3rem;text-align:center;font-size:.72rem
 <!-- PROJECTS -->
 <section id="projects">
   <div class="wrap">
-    <p class="stag reveal">Innovation Portfolio</p>
+    <span class="stag reveal">Innovation Portfolio</span>
     <h2 class="sh reveal">Key Projects</h2>
-    <p class="ss reveal">Each project links to a dedicated page with full details — problem statement, methodology, outcomes, images, and patent connections.</p>
+    <p class="ss reveal">Each project links to a dedicated page with problem statement, methodology, outcomes, and patent connections.</p>
     <div class="proj-grid" id="projectGrid"></div>
   </div>
 </section>
 
-<!-- PATENTS LINK -->
-<section id="patents" style="background:var(--navy);text-align:center">
-  <div class="wrap">
-    <p class="stag" style="color:var(--gold2)">IP Portfolio</p>
-    <h2 class="sh" style="color:var(--white);margin:0 auto .75rem">19 Registered Patents</h2>
-    <p style="font-size:.9rem;color:rgba(255,255,255,.5);max-width:520px;margin:0 auto 2rem">12 utility patents + 7 design patents registered with the Indian Patent Office. View the full portfolio with UAE market analysis.</p>
-    <a href="patent-portfolio.html" class="btn btn-gold">View Full Patent Portfolio →</a>
+<!-- PATENTS CTA -->
+<section id="patents-cta">
+  <div class="wrap" style="text-align:center">
+    <span class="stag" style="color:var(--gold2)">IP Portfolio</span>
+    <h2 class="sh" style="color:var(--white);margin-bottom:.75rem">19 Registered Patents</h2>
+    <p style="font-size:.9rem;color:rgba(255,255,255,.5);max-width:520px;margin:0 auto 2rem">12 utility patents + 7 design patents with UAE market analysis and technology transfer pathways.</p>
+    <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+      <a href="patent-portfolio.html" class="btn btn-gold">View Full Patent Portfolio →</a>
+      <a href="Patent_Portfolio_UAE_with_Images.docx" class="btn btn-ghost" download>Download DOCX Portfolio</a>
+    </div>
   </div>
 </section>
 
 <!-- CONTACT -->
 <section id="contact">
   <div class="wrap">
-    <p class="stag">Get in Touch</p>
+    <span class="stag">Get in Touch</span>
     <h2 class="sh">Open to Collaboration &amp; UAE Opportunities</h2>
     <p class="ss">Available for technology transfer, research collaboration, expert talks, workshops, and UAE employment opportunities.</p>
     <div class="chips">
-      <a href="mailto:chetanpatel@rku.ac.in" class="chip">✉ chetanpatel@rku.ac.in</a>
-      <a href="tel:+919879002288" class="chip">📞 [+91-9879002288]</a>
-      <a href="https://linkedin.com/in/chetanmpatel" class="chip" target="_blank">💼 LinkedIn</a>
-      <a href="https://orcid.org/0000-0001-8699-6141" class="chip" target="_blank">🔬 ORCID</a>
-      <a href="Patent_Portfolio_UAE_with_Images.docx" class="chip" download>📄 Download Patent Portfolio</a>
+      <a href="mailto:chetanpatel.mech@gmail.com" class="chip">✉ chetanpatel.mech@gmail.com</a>
+      <a href="tel:+919879002288" class="chip">📞 +91 9879002288</a>
+      <a href="https://linkedin.com/in/chetanmpatel/" class="chip" target="_blank">💼 LinkedIn</a>
+      <a href="https://scholar.google.com/citations?user=GGLEzugAAAAJ" class="chip" target="_blank">🎓 Google Scholar</a>
+      <a href="https://www.scopus.com/authid/detail.uri?authorId=57213766474" class="chip" target="_blank">🔬 Scopus ID</a>
+      <a href="Patent_Portfolio_UAE_with_Images.docx" class="chip" download>📄 Patent Portfolio (DOCX)</a>
     </div>
   </div>
 </section>
 
-<footer>© 2026 Dr. Chetankumar Patel · RK University, Rajkot · Academic Portfolio</footer>
+<footer>© 2026 Dr. Chetankumar Patel · Professor, RK University, Rajkot · Academic Portfolio</footer>
 
 <script>
-// ── ACTIVITY DATA ─────────────────────────────────────────────────
-// ADD NEW ACTIVITIES HERE — copy a block and fill in your details
-const activities = [
-  // FORMAT: { date, category, title, description, location, participants, tags }
-  // CATEGORIES: workshop | talk | industry | counselling | event | research | other
-
-  { date:'2026-05-10', cat:'workshop', title:'Kids Robotics Workshop — Saturday Session', desc:'Weekly Saturday hands-on workshop for school children ages 10–14. This session focused on building line-following robots using Arduino. 22 students participated, 8 robots completed successfully.', location:'RK University Innovation Lab', participants:'22 students', tags:['Arduino','Robotics','STEM'] },
-
-  { date:'2026-05-06', cat:'talk', title:'Expert Talk: Industry 4.0 and Smart Manufacturing', desc:'Delivered an invited talk to final-year Mechanical Engineering students on Industry 4.0 technologies, IoT in manufacturing, and career pathways in smart manufacturing sectors.', location:'RK University Seminar Hall', participants:'120 students', tags:['Industry 4.0','Smart Manufacturing','IoT'] },
-
-  { date:'2026-05-03', cat:'industry', title:'Industry Visit — Welspun Group, Anjar', desc:'Organized and led a group of 35 students to Welspun Group\'s manufacturing facility in Anjar, Gujarat. Students observed large-scale pipe and steel manufacturing processes.', location:'Welspun Group, Anjar, Gujarat', participants:'35 students + 2 faculty', tags:['Manufacturing','Steel','Industrial Tour'] },
-
-  { date:'2026-04-27', cat:'counselling', title:'Career Counselling — Final Year Students', desc:'Conducted individual and group counselling sessions with 18 final-year B.E. students on career options including higher education, GATE preparation, startup opportunities, and placement strategies.', location:'RK University', participants:'18 students', tags:['Career Guidance','GATE','Higher Education'] },
-
-  { date:'2026-04-19', cat:'workshop', title:'Kids Robotics Workshop — Easter Special', desc:'Special extended session covering basic electronics, sensor integration, and a mini competition. Children built obstacle-avoiding vehicles. First place prize awarded.', location:'RK University Innovation Lab', participants:'30 students', tags:['Robotics','Competition','Electronics'] },
-
-  { date:'2026-04-12', cat:'event', title:'National Innovation Day — Exhibition Coordinator', desc:'Coordinated the display of 12 student innovation projects at the university\'s National Innovation Day. Spine Mobilizer and Breathing Device prototypes attracted significant attention from visiting industry delegates.', location:'RK University Campus', participants:'200+ attendees', tags:['Innovation','Exhibition','Industry Delegates'] },
-
-  { date:'2026-04-05', cat:'workshop', title:'Kids Robotics Workshop — Saturday Session', desc:'Regular weekly session. This week focused on programming concepts — loops, conditions, and basic sensors. Introduced Scratch programming for beginners.', location:'RK University Innovation Lab', participants:'25 students', tags:['Programming','Scratch','Robotics'] },
-
-  { date:'2026-03-28', cat:'research', title:'Breathing Retraining Device — Patent Granted', desc:'Received grant certificate for Patent IN 202321018886 — A Breathing Retraining Device. This is the most recently granted patent in the portfolio. Multidisciplinary collaboration with physiotherapy department.', location:'Indian Patent Office (received)', participants:'Research team', tags:['Patent Granted','Respiratory Health','Medical Device'] },
-
-  { date:'2026-03-22', cat:'talk', title:'Guest Lecture: Sustainable Engineering Design', desc:'Invited guest lecture at Marwadi University, Rajkot on sustainable engineering design principles, life cycle assessment, and designing for circular economy.', location:'Marwadi University, Rajkot', participants:'80 students', tags:['Sustainability','Design','Circular Economy'] },
-
-  { date:'2026-03-15', cat:'industry', title:'Industry Visit — Sun Pharmaceutical, Vadodara', desc:'Educational visit to Sun Pharmaceutical\'s manufacturing facility. Students observed pharmaceutical manufacturing, quality control processes, and cleanroom operations.', location:'Sun Pharma, Vadodara', participants:'28 students + 3 faculty', tags:['Pharma','Manufacturing','Quality Control'] },
-
-  { date:'2026-03-07', cat:'counselling', title:'Startup Mentoring — SSIP Student Projects', desc:'Mentoring session with 6 student teams applying for SSIP (Student Startup and Innovation Policy) grants. Reviewed project proposals, provided feedback on problem statement framing and market analysis.', location:'RK University Innovation Cell', participants:'6 teams, 24 students', tags:['Startup','SSIP','Mentoring','Innovation'] },
-
-  { date:'2026-02-28', cat:'workshop', title:'Kids Robotics Workshop — February Series', desc:'Robotics workshop with focus on teamwork and project-based learning. Students built a simple robotic arm using servo motors. Demonstrated at the end of session to parents.', location:'RK University Innovation Lab', participants:'20 students + parents', tags:['Robotics','Servo Motors','Project-Based Learning'] },
-
-  { date:'2026-02-15', cat:'event', title:'Engineers Day Celebration — Panel Discussion', desc:'Participated as a panelist in Engineers Day celebration discussing the role of academic inventors, patent culture in Indian universities, and translating research to products.', location:'RK University Auditorium', participants:'300+ attendees', tags:['Engineers Day','Patents','Innovation Culture'] },
-
-  { date:'2026-02-08', cat:'research', title:'Heat Storage Apparatus — Journal Submission', desc:'Submitted research paper on the Heat Prevent Box (Patent IN 202321072149 A) to a Scopus-indexed journal on thermal engineering. Paper covers design, testing methodology, and thermal efficiency results.', location:'Remote / Online', participants:'Research team', tags:['Research Paper','Thermal Engineering','Publication'] },
-
-  { date:'2026-01-25', cat:'workshop', title:'Kids Robotics Workshop — New Year Series Launch', desc:'Launched the 2026 series of Saturday robotics workshops. New curriculum introduced focusing on AI-assisted robotics and basic machine learning concepts for kids.', location:'RK University Innovation Lab', participants:'28 students', tags:['Robotics','AI for Kids','New Curriculum'] },
+const activities=[
+  {date:'2026-05-10',cat:'workshop',title:'Kids Robotics Workshop — Saturday Session',desc:'Weekly Saturday hands-on workshop for school children ages 10–14. Focused on building line-following robots using Arduino. 22 students participated, 8 robots completed successfully.',location:'RK University Innovation Lab',participants:'22 students',tags:['Arduino','Robotics','STEM']},
+  {date:'2026-05-06',cat:'talk',title:'Expert Talk: Industry 4.0 and Smart Manufacturing',desc:'Invited talk to final-year Mechanical Engineering students on Industry 4.0 technologies, IoT in manufacturing, and career pathways in smart manufacturing sectors.',location:'RK University Seminar Hall',participants:'120 students',tags:['Industry 4.0','Smart Manufacturing','IoT']},
+  {date:'2026-05-03',cat:'industry',title:'Industry Visit — Welspun Group, Anjar',desc:'Led a group of 35 students to Welspun Group\'s manufacturing facility. Students observed large-scale pipe and steel manufacturing processes.',location:'Welspun Group, Anjar, Gujarat',participants:'35 students + 2 faculty',tags:['Manufacturing','Steel','Industrial Tour']},
+  {date:'2026-04-27',cat:'counselling',title:'Career Counselling — Final Year Students',desc:'Individual and group counselling sessions with 18 final-year B.E. students on career options including higher education, GATE preparation, startup opportunities, and placement strategies.',location:'RK University',participants:'18 students',tags:['Career Guidance','GATE','Higher Education']},
+  {date:'2026-04-19',cat:'workshop',title:'Kids Robotics Workshop — Easter Special',desc:'Extended session covering basic electronics, sensor integration, and a mini competition. Children built obstacle-avoiding vehicles. First place prize awarded.',location:'RK University Innovation Lab',participants:'30 students',tags:['Robotics','Competition','Electronics']},
+  {date:'2026-04-12',cat:'event',title:'National Innovation Day — Exhibition Coordinator',desc:'Coordinated display of 12 student innovation projects at National Innovation Day. Spine Mobilizer and Breathing Device prototypes attracted significant attention from visiting industry delegates.',location:'RK University Campus',participants:'200+ attendees',tags:['Innovation','Exhibition','Industry Delegates']},
+  {date:'2026-03-28',cat:'research',title:'Breathing Retraining Device — Patent Granted',desc:'Received grant certificate for Patent IN 202321018886 — A Breathing Retraining Device. Most recently granted patent in the portfolio. Multidisciplinary collaboration with physiotherapy department.',location:'Indian Patent Office',participants:'Research team',tags:['Patent Granted','Respiratory Health','Medical Device']},
+  {date:'2026-03-22',cat:'talk',title:'Guest Lecture: Sustainable Engineering Design',desc:'Invited guest lecture at Marwadi University on sustainable engineering design principles, life cycle assessment, and designing for circular economy.',location:'Marwadi University, Rajkot',participants:'80 students',tags:['Sustainability','Design','Circular Economy']},
+  {date:'2026-03-07',cat:'counselling',title:'Startup Mentoring — SSIP Student Projects',desc:'Mentoring session with 6 student teams applying for SSIP grants. Reviewed project proposals, provided feedback on problem statement framing and market analysis.',location:'RK University Innovation Cell',participants:'6 teams, 24 students',tags:['Startup','SSIP','Mentoring']},
+  {date:'2026-02-15',cat:'event',title:'Engineers Day — Panel Discussion',desc:'Panelist in Engineers Day celebration discussing the role of academic inventors, patent culture in Indian universities, and translating research to products.',location:'RK University Auditorium',participants:'300+ attendees',tags:['Engineers Day','Patents','Innovation Culture']},
 ];
 
-// ── PROJECT DATA ──────────────────────────────────────────────────
-// ADD NEW PROJECTS HERE — each links to projects/project-name.html
-const projects = [
-  { id:'spine-mobilizer',      icon:'🦴', title:'Spine Mobilization Device',          sub:'Commercialized Medical Device',    status:'ps-commercialized', statusLabel:'Commercialized', desc:'The only handheld spine mobilization device of its kind globally at time of filing. Currently sold commercially. Funded by DST Nidhi ITB startup grant.', tags:['Medical Device','PhysioTech','Commercialized'], patent:'IN 202221059481' },
-  { id:'breathing-device',     icon:'🫁', title:'Breathing Retraining Device',         sub:'Granted Patent — March 2026',      status:'ps-granted',       statusLabel:'Granted',       desc:'Multi-parameter device measuring volume, pressure and resistance simultaneously for breathing retraining. Only such device globally. Granted March 2026.', tags:['Respiratory Health','MedTech','Granted'], patent:'IN 202321018886' },
-  { id:'tractor-trolley',      icon:'🌾', title:'Multipurpose Tractor Trolley',        sub:'Granted Patent — AgriTech',        status:'ps-granted',       statusLabel:'Granted',       desc:'Reduces forage collection time by 75% and operational cost by 70%. SSIP PoC Grant + Startup Grant awarded. Highly relevant to UAE Food Security Strategy 2051.', tags:['AgriTech','Food Security','Granted'], patent:'202021024990' },
-  { id:'heat-storage',         icon:'🔥', title:'Heat Prevent Box',                    sub:'Thermal Energy Storage Apparatus', status:'ps-published',     statusLabel:'Published',     desc:'Novel heat storage apparatus for thermal energy management. Applicable to UAE solar thermal storage and cold chain logistics in extreme heat environments.', tags:['Energy','Thermal Storage','UAE Energy 2050'], patent:'IN 202321072149 A' },
-  { id:'irrigation-joint',     icon:'💧', title:'Irrigation Joint Ring',               sub:'Water-Efficient Engineering',      status:'ps-published',     statusLabel:'Published',     desc:'Improved joint for irrigation extension pipes solving structural weaknesses in conventional designs. Directly relevant to UAE Water Security Strategy.', tags:['Water Tech','Irrigation','Desert Agriculture'], patent:'IN 202221065844' },
-  { id:'retractable-seat',     icon:'🚇', title:'Retractable Hanging Seat',            sub:'Granted Patent — Smart Transport', status:'ps-granted',       statusLabel:'Granted',       desc:'Supplementary retractable seat for public transport walkways. Granted June 2023. SSIP-funded. Applicable to Dubai Metro and Abu Dhabi bus networks.', tags:['Transport','Smart City','Granted'], patent:'201921006650' },
-  { id:'gas-cylinder',         icon:'⚙️', title:'Dual-Chamber Gas Cylinder',           sub:'Industrial Safety Innovation',     status:'ps-published',     statusLabel:'Published',     desc:'Single unit gas cylinder with partition combining oxygen and acetylene chambers. Reduces workplace handling hazards in welding and industrial applications.', tags:['Industrial Safety','Manufacturing'], patent:'201821044415' },
-  { id:'oil-expeller',         icon:'🌻', title:'Dual Chamber Oil Expeller',           sub:'Food Processing Innovation',       status:'ps-published',     statusLabel:'Published',     desc:'Dual-chamber oil expeller improving throughput and oil yield over conventional single-chamber units. Applicable to UAE agri-food processing sector.', tags:['Food Processing','AgriTech','Food Security'], patent:'IN 202321062068' },
-  { id:'adjustable-chair',     icon:'🪑', title:'Multipurpose Adjustable Chair',       sub:'Assistive Technology Design',      status:'ps-published',     statusLabel:'Filed',         desc:'Ergonomic adjustable chair with screw-jack height mechanism and foldable modular design. Aligned with UAE Disability Inclusion Strategy.', tags:['Assistive Tech','Ergonomics','Inclusive Design'], patent:'IN 202521014193' },
-  { id:'self-stirring',        icon:'☕', title:'Self-Stirring Container',             sub:'Consumer Product Innovation',      status:'ps-published',     statusLabel:'Published',     desc:'Mechanically operated container with internal gear mechanism for automatic stirring. No electricity required. Applicable to UAE hospitality sector.', tags:['Consumer Product','Mechanical Design'], patent:'201921019035' },
-  { id:'gas-dragger',          icon:'🏭', title:'Gas Cylinder Dragging Device',        sub:'Occupational Safety Tool',         status:'ps-published',     statusLabel:'Published',     desc:'Adjustable wheeled device for transporting gas cylinders without manual lifting. Reduces occupational injury risk in industrial and construction environments.', tags:['OHS','Industrial Safety','UAE OSHAD'], patent:'202121044960' },
-  { id:'kids-robotics',        icon:'🤖', title:'Kids Robotics Workshop Programme',    sub:'Ongoing Weekly Programme',         status:null,               statusLabel:null,            desc:'Weekly Saturday robotics workshops for school children aged 10–14. Arduino, Scratch programming, and project-based learning. Running since 2023.', tags:['Education','STEM','Robotics'], patent:null },
+const projects=[
+  {id:'spine-mobilizer',icon:'🦴',title:'Spine Mobilization Device',sub:'Commercialized Medical Device',status:'ps-commercialized',statusLabel:'Commercialized',desc:'The only handheld spine mobilization device of its kind globally at time of filing. Currently sold commercially. Funded by DST Nidhi ITB startup grant.',tags:['Medical Device','PhysioTech','Commercialized'],patent:'IN 202221059481'},
+  {id:'breathing-device',icon:'🫁',title:'Breathing Retraining Device',sub:'Granted Patent — March 2026',status:'ps-granted',statusLabel:'Granted',desc:'Multi-parameter device measuring volume, pressure and resistance simultaneously. Only such device globally. Granted March 2026.',tags:['Respiratory Health','MedTech','Granted'],patent:'IN 202321018886'},
+  {id:'tractor-trolley',icon:'🌾',title:'Multipurpose Tractor Trolley',sub:'Granted Patent — AgriTech',status:'ps-granted',statusLabel:'Granted',desc:'Reduces forage collection time by 75% and operational cost by 70%. SSIP PoC Grant + Startup Grant awarded.',tags:['AgriTech','Food Security','Granted'],patent:'202021024990'},
+  {id:'heat-storage',icon:'🔥',title:'Heat Prevent Box',sub:'Thermal Energy Storage',status:'ps-published',statusLabel:'Published',desc:'Novel heat storage apparatus for thermal energy management. Applicable to UAE solar thermal storage and cold chain logistics.',tags:['Energy','Thermal Storage','UAE Energy 2050'],patent:'IN 202321072149 A'},
+  {id:'water-hyacinth',icon:'🚤',title:'Water Hyacinth Cutter (ROV)',sub:'Startup — INR 17.4L Grant',status:'ps-published',statusLabel:'Funded',desc:'Floating vessel with cutter mechanism for water hyacinth removal. 80% cheaper and 2× faster than existing cutters. INR 17.4L startup grant received.',tags:['Robotics','Water Management','Startup'],patent:'Filed'},
+  {id:'ev-conversion',icon:'⚡',title:'EV Bike Conversion Project',sub:'Sustainable Mobility Innovation',status:null,statusLabel:null,desc:'Converted petrol bike to EV. Range 55 km, speed 50 km/hr, cost 0.15₹/km. Published in local newspapers. Extended to hybrid Activa scooter variant.',tags:['Electric Vehicle','Sustainability','Manufacturing'],patent:null},
+  {id:'retractable-seat',icon:'🚇',title:'Retractable Hanging Seat',sub:'Granted Patent — Smart Transport',status:'ps-granted',statusLabel:'Granted',desc:'Supplementary retractable seat for public transport. Granted June 2023. Applicable to Dubai Metro and Abu Dhabi bus networks.',tags:['Transport','Smart City','Granted'],patent:'201921006650'},
+  {id:'robofest',icon:'🤖',title:'Underwater ROV — Robofest 3.0',sub:'National Competition Finalist',status:null,statusLabel:null,desc:'Remotely operated wireless underwater robot. Finalist in Robofest 3.0 — India\'s biggest robotics competition. Prize money of INR 5L by Gujcost.',tags:['Robotics','ROV','National Competition'],patent:null},
 ];
 
-// ── RENDER ACTIVITIES ─────────────────────────────────────────────
-function catClass(cat){return{workshop:'c-workshop',talk:'c-talk',industry:'c-industry',counselling:'c-counselling',event:'c-event',research:'c-research',other:'c-other'}[cat]||'c-other'}
-function catLabel(cat){return{workshop:'Workshop',talk:'Expert Talk',industry:'Industry Visit',counselling:'Counselling',event:'Event',research:'Research',other:'Other'}[cat]||'Activity'}
-function dotClass(cat){return'dot-'+(cat||'other')}
-function fmtDate(d){const[y,m,da]=d.split('-');const months=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];return months[+m-1]+'<br>'+da+'<br><span style="opacity:.6">'+y+'</span>'}
+function catClass(c){return{workshop:'c-workshop',talk:'c-talk',industry:'c-industry',counselling:'c-counselling',event:'c-event',research:'c-research'}[c]||'c-other'}
+function catLabel(c){return{workshop:'Workshop',talk:'Expert Talk',industry:'Industry Visit',counselling:'Counselling',event:'Event',research:'Research'}[c]||'Other'}
+function dotClass(c){return'dot-'+(c||'other')}
+function fmtDate(d){const[y,m,da]=d.split('-');const mo=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];return mo[+m-1]+'<br>'+da+'<br><span style="opacity:.6">'+y+'</span>'}
 
 function renderFeed(){
-  const feed=document.getElementById('activityFeed');
-  feed.innerHTML=activities.map((a,i)=>`
-    <div class="feed-item" data-cat="${a.cat}" id="fi${i}">
+  document.getElementById('activityFeed').innerHTML=activities.map((a,i)=>`
+    <div class="feed-item" data-cat="${a.cat}">
       <div class="feed-left">
         <div class="feed-date">${fmtDate(a.date)}</div>
         <div class="feed-dot ${dotClass(a.cat)}"></div>
@@ -317,29 +443,23 @@ function renderFeed(){
         </div>
       </div>
     </div>`).join('');
-  document.getElementById('feedHint').textContent=`Showing ${activities.length} activities · Add more in the activities array in index.html`;
+  document.getElementById('feedHint').textContent=`Showing ${activities.length} recent activities · Add more entries in the JS array in index.html`;
 }
 
 function filterFeed(cat,btn){
   document.querySelectorAll('.cat-pill').forEach(b=>b.classList.remove('active'));
   btn.classList.add('active');
-  document.querySelectorAll('.feed-item').forEach(el=>{
-    el.classList.toggle('hidden',cat!=='all'&&el.dataset.cat!==cat);
-  });
+  document.querySelectorAll('.feed-item').forEach(el=>el.classList.toggle('hidden',cat!=='all'&&el.dataset.cat!==cat));
 }
 
-// ── RENDER PROJECTS ───────────────────────────────────────────────
 function renderProjects(){
   document.getElementById('projectGrid').innerHTML=projects.map(p=>`
     <a class="proj-card" href="projects/${p.id}.html">
       <div class="proj-card-top">
         <div class="proj-icon">${p.icon}</div>
         <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:.5rem">
-          <div>
-            <div class="proj-title">${p.title}</div>
-            <div class="proj-sub">${p.sub}</div>
-          </div>
-          ${p.statusLabel?`<span class="proj-status ${p.status}">${p.statusLabel}</span>`:''}
+          <div><div class="proj-title">${p.title}</div><div class="proj-sub">${p.sub}</div></div>
+          ${p.statusLabel?`<span class="proj-status ${p.status||'ps-published'}">${p.statusLabel}</span>`:''}
         </div>
       </div>
       <div class="proj-card-body">
@@ -353,7 +473,6 @@ function renderProjects(){
     </a>`).join('');
 }
 
-// ── REVEAL ────────────────────────────────────────────────────────
 const obs=new IntersectionObserver(entries=>{
   entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('visible'),i*80);obs.unobserve(e.target)}});
 },{threshold:0.08});

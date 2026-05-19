@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Research & Publications — Dr. Chetankumar Patel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+.page-hero{padding:calc(var(--nav-h) + 3rem) 3rem 3rem;background:linear-gradient(135deg,#0F2244 0%,#1B3A6B 60%,#0d3b5e 100%);position:relative;overflow:hidden}
+.page-hero::before{content:'';position:absolute;top:-20%;right:-10%;width:50vw;height:50vw;border:1px solid rgba(200,151,43,.08);border-radius:50%}
+.page-hero-inner{max-width:1100px;margin:0 auto;position:relative;z-index:2}
+.breadcrumb{display:flex;align-items:center;gap:.5rem;font-size:.75rem;color:rgba(255,255,255,.4);margin-bottom:1.5rem}
+.breadcrumb a{color:rgba(255,255,255,.5);text-decoration:none;transition:color .15s}
+.breadcrumb a:hover{color:var(--gold2)}
+.page-hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.5rem,5vw,4rem);font-weight:700;color:var(--white);margin-bottom:.4rem;line-height:1.1}
+.page-hero p{font-size:.92rem;color:rgba(255,255,255,.5);margin-bottom:1.75rem}
+.hero-stats{display:flex;flex-wrap:wrap;gap:.75rem}
+.h-stat{background:rgba(255,255,255,.07);border:1px solid rgba(200,151,43,.2);border-radius:var(--r);padding:.75rem 1.2rem;text-align:center}
+.h-stat-n{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:700;color:var(--gold2);line-height:1}
+.h-stat-l{font-size:.65rem;color:rgba(255,255,255,.45);margin-top:.15rem;letter-spacing:.07em;text-transform:uppercase}
+
+/* LAYOUT */
+.res-layout{display:grid;grid-template-columns:240px 1fr;gap:2.5rem;max-width:1100px;margin:0 auto}
+.res-sidebar{position:sticky;top:calc(var(--nav-h) + 1.5rem);height:fit-content}
+.sidebar-nav{background:var(--white);border:1px solid var(--smoke);border-radius:calc(var(--r)*1.5);overflow:hidden}
+.sn-item{display:flex;align-items:center;gap:.6rem;padding:.7rem 1rem;font-size:.81rem;color:var(--muted);text-decoration:none;border-bottom:1px solid var(--smoke);transition:all .15s}
+.sn-item:last-child{border-bottom:none}
+.sn-item:hover,.sn-item.active{color:var(--navy);background:var(--warm);font-weight:500}
+.sn-count{margin-left:auto;font-family:'DM Mono',monospace;font-size:.7rem;background:var(--smoke);color:var(--muted);padding:.1rem .45rem;border-radius:20px}
+
+/* PUBLICATION */
+.pub-section{margin-bottom:3rem;scroll-margin-top:calc(var(--nav-h) + 1.5rem)}
+.pub-section h2{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:700;color:var(--navy);margin-bottom:.4rem;padding-bottom:.4rem;border-bottom:2px solid var(--gold)}
+.pub-section-sub{font-size:.83rem;color:var(--muted);margin:.5rem 0 1.25rem}
+
+/* Filter / search */
+.pub-filter{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:1.25rem}
+.pub-fb{font-size:.75rem;font-weight:500;padding:.32rem .85rem;border-radius:20px;border:1px solid var(--smoke);background:var(--white);color:var(--muted);cursor:pointer;transition:all .15s}
+.pub-fb:hover{border-color:var(--navy);color:var(--navy)}
+.pub-fb.active{background:var(--navy);color:var(--white);border-color:var(--navy)}
+.pub-search{flex:1;min-width:180px;padding:.35rem .85rem;border:1px solid var(--smoke);border-radius:20px;font-size:.78rem;background:var(--white);color:var(--ink);outline:none;transition:border-color .15s}
+.pub-search:focus{border-color:var(--navy)}
+
+/* Publication items */
+.pub-list{display:flex;flex-direction:column;gap:.75rem}
+.pub-item{background:var(--white);border:1px solid var(--smoke);border-radius:calc(var(--r)*1.2);padding:1rem 1.25rem;transition:box-shadow .2s}
+.pub-item:hover{box-shadow:0 4px 16px rgba(27,58,107,.07)}
+.pub-item.hidden{display:none}
+.pub-num{font-family:'DM Mono',monospace;font-size:.68rem;color:var(--light);margin-bottom:.35rem}
+.pub-title{font-size:.9rem;font-weight:500;color:var(--ink);line-height:1.5;margin-bottom:.35rem}
+.pub-authors{font-size:.78rem;color:var(--muted);margin-bottom:.3rem}
+.pub-venue{font-size:.78rem;color:var(--blue);font-style:italic;margin-bottom:.4rem}
+.pub-chips{display:flex;flex-wrap:wrap;gap:.35rem}
+.pub-chip{font-size:.65rem;padding:.15rem .55rem;border-radius:20px}
+.pc-scopus{background:#e3f2fd;color:var(--blue)}
+.pc-wos{background:#e8f5e9;color:var(--green)}
+.pc-international{background:rgba(27,58,107,.08);color:var(--navy)}
+.pc-national{background:#fef3e2;color:var(--amber)}
+.pc-conference{background:#f3e8ff;color:var(--purple)}
+.pc-journal{background:#e8f5e9;color:var(--green)}
+.pc-book{background:#fff8e1;color:#7B5800;border:1px solid #ffd54f}
+.pc-chapter{background:var(--warm);color:var(--muted);border:1px solid var(--smoke)}
+.pc-year{font-family:'DM Mono',monospace;background:var(--warm);color:var(--muted);border:1px solid var(--smoke)}
+
+/* Books */
+.book-card{background:var(--white);border:1px solid var(--smoke);border-radius:calc(var(--r)*1.5);padding:1.35rem;margin-bottom:1rem;display:grid;grid-template-columns:60px 1fr;gap:1rem;align-items:start}
+.book-spine{background:linear-gradient(to bottom,var(--navy),#2a5298);border-radius:4px;height:80px;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.4);font-size:1.4rem}
+.book-title{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:700;color:var(--navy);margin-bottom:.25rem}
+.book-meta{font-size:.8rem;color:var(--muted);margin-bottom:.5rem}
+.book-desc{font-size:.83rem;color:var(--ink);line-height:1.55}
+
+/* PhD guidance */
+.phd-table{width:100%;border-collapse:collapse;font-size:.83rem}
+.phd-table th{background:var(--navy);color:var(--white);padding:.65rem .9rem;text-align:left;font-size:.7rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase}
+.phd-table td{padding:.65rem .9rem;border-bottom:1px solid var(--smoke);vertical-align:top}
+.phd-table tr:nth-child(even) td{background:rgba(250,247,242,.5)}
+.phd-table tr:last-child td{border-bottom:none}
+.phd-status{font-size:.68rem;font-weight:500;padding:.15rem .55rem;border-radius:20px}
+.ps-awarded{background:#e8f5e9;color:var(--green)}
+.ps-ongoing{background:#fff8e1;color:#7B5800;border:1px solid #ffd54f}
+
+/* Grants */
+.grant-card{background:var(--white);border:1px solid var(--smoke);border-radius:calc(var(--r)*1.5);padding:1.2rem 1.35rem;margin-bottom:.85rem;display:flex;align-items:flex-start;gap:1rem}
+.grant-icon{font-size:1.5rem;flex-shrink:0;margin-top:2px}
+.grant-title{font-size:.9rem;font-weight:500;color:var(--ink);margin-bottom:.2rem}
+.grant-body{font-size:.8rem;color:var(--muted);margin-bottom:.4rem}
+.grant-amount{display:inline-block;background:#fff8e1;color:#7B5800;border:1px solid #ffd54f;border-radius:20px;padding:.15rem .65rem;font-size:.72rem;font-weight:500;font-family:'DM Mono',monospace}
+
+/* Webinars */
+.webinar-item{padding:.75rem 0;border-bottom:1px solid var(--smoke);display:flex;gap:1rem;align-items:flex-start;font-size:.84rem}
+.webinar-item:last-child{border-bottom:none}
+.webinar-icon{font-size:1.1rem;flex-shrink:0}
+.webinar-title{font-weight:500;color:var(--ink);margin-bottom:.2rem}
+.webinar-meta{font-size:.76rem;color:var(--muted)}
+
+/* External links */
+.ext-links{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.5rem}
+.ext-link{display:inline-flex;align-items:center;gap:.4rem;font-size:.8rem;color:var(--navy);border:1px solid var(--smoke);border-radius:var(--r);padding:.45rem .9rem;text-decoration:none;background:var(--white);transition:all .15s}
+.ext-link:hover{border-color:var(--navy);background:var(--warm)}
+
+@media(max-width:900px){
+  .res-layout{grid-template-columns:1fr}
+  .res-sidebar{position:static}
+  .page-hero{padding:calc(var(--nav-h) + 2rem) 1.25rem 2rem}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">Dr. Chetankumar Patel</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About & CV</a></li>
+    <li><a href="research.html" class="active">Research</a></li>
+    <li><a href="patent-portfolio.html">Patents</a></li>
+    <li><a href="index.html#projects">Projects</a></li>
+    <li><a href="index.html#activities">Activities</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="breadcrumb"><a href="index.html">Home</a> <span>›</span> <span>Research & Publications</span></div>
+    <h1>Research &amp; Publications</h1>
+    <p>80+ publications across international journals, conferences, and books · PhD guidance · Government-funded research</p>
+    <div class="hero-stats">
+      <div class="h-stat"><div class="h-stat-n">27</div><div class="h-stat-l">Int'l Journals</div></div>
+      <div class="h-stat"><div class="h-stat-n">49</div><div class="h-stat-l">Int'l Conferences</div></div>
+      <div class="h-stat"><div class="h-stat-n">3</div><div class="h-stat-l">Books</div></div>
+      <div class="h-stat"><div class="h-stat-n">5</div><div class="h-stat-l">PhDs Awarded</div></div>
+      <div class="h-stat"><div class="h-stat-n">8</div><div class="h-stat-l">PhDs Ongoing</div></div>
+      <div class="h-stat"><div class="h-stat-n">30+</div><div class="h-stat-l">Funded Projects</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- EXTERNAL LINKS -->
+<div style="background:var(--white);border-bottom:1px solid var(--smoke);padding:1rem 3rem">
+  <div style="max-width:1100px;margin:0 auto;display:flex;flex-wrap:wrap;gap:.6rem;align-items:center">
+    <span style="font-size:.78rem;color:var(--muted);font-weight:500">View profiles:</span>
+    <a href="https://scholar.google.com/citations?user=GGLEzugAAAAJ" class="ext-link" target="_blank">🎓 Google Scholar</a>
+    <a href="https://www.scopus.com/authid/detail.uri?authorId=57213766474" class="ext-link" target="_blank">🔬 Scopus (ID: 57213766474)</a>
+    <a href="https://orcid.org/0000-0002-0893-4459" class="ext-link" target="_blank">🆔 ORCID: 0000-0002-0893-4459</a>
+    <a href="https://www.researchgate.net/profile/Chetankumar_Patel2" class="ext-link" target="_blank">📊 ResearchGate</a>
+  </div>
+</div>
+
+<!-- BODY -->
+<section style="padding:3rem 3rem">
+  <div class="res-layout">
+
+    <!-- SIDEBAR -->
+    <div class="res-sidebar">
+      <nav class="sidebar-nav">
+        <a href="#journals" class="sn-item active">📰 Int'l Journals<span class="sn-count">27</span></a>
+        <a href="#conferences" class="sn-item">🎤 Int'l Conferences<span class="sn-count">49</span></a>
+        <a href="#national" class="sn-item">📄 National<span class="sn-count">8+</span></a>
+        <a href="#books" class="sn-item">📚 Books<span class="sn-count">3</span></a>
+        <a href="#phd" class="sn-item">🎓 PhD Guidance<span class="sn-count">13</span></a>
+        <a href="#grants" class="sn-item">💰 Funded Projects<span class="sn-count">30+</span></a>
+        <a href="#webinars" class="sn-item">🖥️ Webinars & FDPs</a>
+      </nav>
+      <div style="margin-top:1rem">
+        <a href="patent-portfolio.html" class="btn btn-navy" style="width:100%;justify-content:center;margin-bottom:.6rem">Patent Portfolio →</a>
+        <a href="about.html" class="btn btn-outline" style="width:100%;justify-content:center">Full CV →</a>
+      </div>
+    </div>
+
+    <!-- MAIN -->
+    <div>
+
+      <!-- INTERNATIONAL JOURNALS -->
+      <div class="pub-section" id="journals">
+        <h2>International Journal Publications</h2>
+        <p class="pub-section-sub">27 publications in peer-reviewed international journals including Scopus, Web of Science, and other indexed journals.</p>
+        <div class="pub-filter">
+          <button class="pub-fb active" onclick="filterPubs('journals','all',this)">All (27)</button>
+          <button class="pub-fb" onclick="filterPubs('journals','scopus',this)">Scopus</button>
+          <button class="pub-fb" onclick="filterPubs('journals','wos',this)">Web of Science</button>
+          <input class="pub-search" type="text" placeholder="Search publications…" oninput="searchPubs('journals',this.value)">
+        </div>
+        <div class="pub-list" id="journals-list"></div>
+      </div>
+
+      <!-- INTERNATIONAL CONFERENCES -->
+      <div class="pub-section" id="conferences">
+        <h2>International Conference Publications</h2>
+        <p class="pub-section-sub">49 papers presented and published at international conferences across India, USA, Malaysia, and other countries.</p>
+        <div class="pub-filter">
+          <button class="pub-fb active" onclick="filterPubs('conferences','all',this)">All (49)</button>
+          <button class="pub-fb" onclick="filterPubs('conferences','scopus',this)">Scopus/AIP</button>
+          <button class="pub-fb" onclick="filterPubs('conferences','usa',this)">USA</button>
+          <button class="pub-fb" onclick="filterPubs('conferences','asme',this)">ASME</button>
+          <input class="pub-search" type="text" placeholder="Search conferences…" oninput="searchPubs('conferences',this.value)">
+        </div>
+        <div class="pub-list" id="conferences-list"></div>
+      </div>
+
+      <!-- NATIONAL -->
+      <div class="pub-section" id="national">
+        <h2>National Journals &amp; Conferences</h2>
+        <p class="pub-section-sub">Publications in national journals and presentations at national-level conferences.</p>
+        <div class="pub-list" id="national-list"></div>
+      </div>
+
+      <!-- BOOKS -->
+      <div class="pub-section" id="books">
+        <h2>Books &amp; Book Chapters</h2>
+        <p class="pub-section-sub">Author and co-author of books on pedagogy, engineering, and innovation.</p>
+
+        <div class="book-card">
+          <div class="book-spine">📘</div>
+          <div>
+            <div class="book-title">Empowering Engineering Education: A Handbook for Educators</div>
+            <div class="book-meta">Chetankumar M. Patel, Kirankumar V. Bhatt, Divyesh A. Joshi · ISBN: 978-93-94116-36-2 · Educreation Publishing (2022)</div>
+            <div class="book-desc">A comprehensive handbook for engineering educators covering modern pedagogies including OBE, PBL, and blended learning frameworks. Addresses curriculum design, assessment strategies, and learner-centric teaching approaches.</div>
+          </div>
+        </div>
+
+        <div class="book-card">
+          <div class="book-spine">📗</div>
+          <div>
+            <div class="book-title">Engineering Thinking Through Design</div>
+            <div class="book-meta">Chetankumar M. Patel · (Under completion)</div>
+            <div class="book-desc">Covers design thinking methodology, product development processes, and innovation frameworks for engineering students. Based on 20+ years of teaching experience and industry-academic projects.</div>
+          </div>
+        </div>
+
+        <div class="book-card">
+          <div class="book-spine">📙</div>
+          <div>
+            <div class="book-title">Innovation Management &amp; IPR for Engineers</div>
+            <div class="book-meta">Chetankumar M. Patel · (Under writing)</div>
+            <div class="book-desc">A practical guide for engineering students and academics on innovation management, intellectual property rights, patent filing, and technology transfer — drawing from 19 patents and 30+ funded projects.</div>
+          </div>
+        </div>
+
+        <div style="margin-top:1.5rem">
+          <p style="font-size:.82rem;font-weight:500;color:var(--navy);margin-bottom:.75rem">Book Chapters</p>
+          <div class="pub-list" id="chapters-list"></div>
+        </div>
+      </div>
+
+      <!-- PhD GUIDANCE -->
+      <div class="pub-section" id="phd">
+        <h2>PhD Guidance</h2>
+        <p class="pub-section-sub">5 PhDs awarded, 8 ongoing across RK University and other institutions.</p>
+        <div style="overflow-x:auto">
+          <table class="phd-table">
+            <thead>
+              <tr><th>#</th><th>Scholar Name</th><th>Topic</th><th>University</th><th>Year</th><th>Status</th></tr>
+            </thead>
+            <tbody id="phd-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- FUNDED PROJECTS -->
+      <div class="pub-section" id="grants">
+        <h2>Government Grants &amp; Funded Projects</h2>
+        <p class="pub-section-sub">30+ projects funded by DST, SSIP, Gujcost, AICTE, and other government bodies.</p>
+        <div id="grants-list"></div>
+      </div>
+
+      <!-- WEBINARS & FDPs -->
+      <div class="pub-section" id="webinars">
+        <h2>Webinars, FDPs &amp; STTPs Conducted</h2>
+        <p class="pub-section-sub">Conducted and participated in numerous Faculty Development Programmes, Short Term Training Programmes, and international webinars.</p>
+        <div style="background:var(--white);border:1px solid var(--smoke);border-radius:calc(var(--r)*1.5);padding:1rem 1.5rem">
+          <div id="webinars-list"></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<footer>© 2026 Dr. Chetankumar Patel · Professor, RK University, Rajkot · Academic Portfolio</footer>
+
+<script>
+// ── DATA ──────────────────────────────────────────────────────────
+
+const journals = [
+  {n:1, title:'A Systematic Review of Hip Implant Manufacturing Technologies and Surface Engineering for Biomedical Applications', authors:'Chetankumar Patel et al.', venue:'SN Applied Sciences, Springer · Vol. 6, 2024', tags:['scopus','journal','2024'], year:2024},
+  {n:2, title:'Design and Development of Sustainable Energy System Using Phase Change Material for Heat Storage', authors:'Chetankumar M. Patel et al.', venue:'Journal of Engineering Design and Technology, Emerald · 2023', tags:['scopus','journal','2023'], year:2023},
+  {n:3, title:'Structural Analysis of Fixed Collet Chuck Through CAE Tool', authors:'Chetankumar M. Patel, Dr. Devendra A. Patel', venue:'International Journal of Mechanical Engineering and Technology (IJMET), IAEME · Vol. 9, No. 11, 2018 · ISSN Print: 0976-6340', tags:['scopus','journal','2018'], year:2018},
+  {n:4, title:'Effect of Strain Rate on the Mechanical Properties of Nano Silicon Carbide Reinforced Aluminium Nanocomposites', authors:'Chetankumar Patel et al.', venue:'FME Transactions, Serbia · Vol. 47, No. 2, 2019 · ISSN: 1451-2092', tags:['scopus','wos','journal','2019'], year:2019},
+  {n:5, title:'Fabrication and Characterisation of Silicon Carbide Reinforced Aluminium Nanocomposites', authors:'Chetankumar Patel et al.', venue:'Transactions of FAMENA, Croatia · Vol. 43, No. 3, 2019 · ISSN: 1333-1124', tags:['scopus','wos','journal','2019'], year:2019},
+  {n:6, title:'Investigate the Effect of Process Parameter on Surface Roughness of 3D Printing PLA Material', authors:'Chetankumar M. Patel et al.', venue:'Journal of Engineering Design and Technology, Emerald · 2019', tags:['scopus','journal','2019'], year:2019},
+  {n:7, title:'Experimental Investigation of High Density Polyethylene and Glass Fiber Reinforced Polyamide 66 Joint Using Vibration Welding', authors:'Chetankumar M. Patel et al.', venue:'Journal of Engineering Design and Technology, Emerald · 2019', tags:['scopus','journal','2019'], year:2019},
+  {n:8, title:'Comparative Study and Improvement of Vibration Welding Parameters for Polymer Joining', authors:'Chetankumar M. Patel et al.', venue:'IOP Conference Series: Materials Science and Engineering · 2019', tags:['scopus','journal','2019'], year:2019},
+  {n:9, title:'Influence of Process Parameters on Dimensional Accuracy of 3D Printing of Acrylonitrile Butadiene Styrene', authors:'Chetankumar M. Patel et al.', venue:'Polymer Engineering & Science, Wiley · 2020', tags:['scopus','wos','journal','2020'], year:2020},
+  {n:10, title:'Mechanical Properties of Natural Fiber Reinforced Thermoplastic Composites for 3D Printing', authors:'Chetankumar Patel et al.', venue:'Journal of Natural Fibers, Taylor & Francis · 2021', tags:['scopus','journal','2021'], year:2021},
+  {n:11, title:'Review of Machine Learning and Deep Learning Methods for Bearing Fault Diagnosis', authors:'Chetankumar Patel et al.', venue:'International Journal of Advanced Manufacturing Technology · 2022', tags:['scopus','journal','2022'], year:2022},
+  {n:12, title:'Additive Manufacturing of Polymers: Review of Technologies and Future Challenges', authors:'Chetankumar Patel et al.', venue:'Materials Today: Proceedings · 2021', tags:['scopus','journal','2021'], year:2021},
+  {n:13, title:'Design and Analysis of Multi-Leaf Spring for Commercial Vehicle', authors:'Chetankumar M. Patel et al.', venue:'International Journal of Engineering Research & Technology (IJERT) · Vol. 5 · 2016', tags:['journal','2016'], year:2016},
+  {n:14, title:'Finite Element Analysis of Rubber Compression Moulding Machine', authors:'Chetankumar M. Patel, Dr. Devendra A. Patel', venue:'International Journal of Engineering Research & Technology (IJERT) · Vol. 1, Issue 4 · 2012', tags:['journal','2012'], year:2012},
+  {n:15, title:'Optimizing Teaching-Learning in Engineering with ICT Tools', authors:'Chetankumar M. Patel et al.', venue:'Journal of Engineering Education Transformations (JEET) · 2017', tags:['journal','2017'], year:2017},
+  {n:16, title:'Innovative Teaching Methods for Engineering Students: A Case Study', authors:'Chetankumar M. Patel', venue:'International Journal of Engineering Education · 2016', tags:['journal','2016'], year:2016},
+  {n:17, title:'Effect of Heat Treatment on Mechanical Properties of Al-SiC Nanocomposites', authors:'Chetankumar Patel et al.', venue:'Materials Science Forum · 2020', tags:['scopus','journal','2020'], year:2020},
+  {n:18, title:'Tribological Behavior of Aluminium Matrix Composites: A Review', authors:'Chetankumar Patel et al.', venue:'Journal of Composite Materials, SAGE · 2021', tags:['scopus','journal','2021'], year:2021},
+  {n:19, title:'Optimization of FDM Process Parameters for Mechanical Properties of PLA Samples', authors:'Chetankumar Patel et al.', venue:'Rapid Prototyping Journal, Emerald · 2022', tags:['scopus','journal','2022'], year:2022},
+  {n:20, title:'Design of Modular Fixtures for Mass Production', authors:'Chetankumar M. Patel, Dr. Devendra A. Patel', venue:'International Journal of Advanced Manufacturing Technology · 2013', tags:['scopus','journal','2013'], year:2013},
+  {n:21, title:'Surface Integrity Analysis of Machined Surfaces: A Review', authors:'Chetankumar Patel et al.', venue:'International Journal of Machining and Machinability of Materials · 2023', tags:['scopus','journal','2023'], year:2023},
+  {n:22, title:'Comparative Analysis of ANSYS and Experimental Results for Collet Chuck Design', authors:'Chetankumar M. Patel, Devendra A. Patel', venue:'International Journal of Mechanical and Production Engineering · 2016', tags:['journal','2016'], year:2016},
+  {n:23, title:'Green Manufacturing Practices: Systematic Review and Future Directions', authors:'Chetankumar Patel et al.', venue:'Cleaner Engineering and Technology, Elsevier · 2023', tags:['scopus','journal','2023'], year:2023},
+  {n:24, title:'Machine Learning Applications in Manufacturing Process Optimization: Review', authors:'Chetankumar Patel et al.', venue:'International Journal of Production Research, Taylor & Francis · 2022', tags:['scopus','wos','journal','2022'], year:2022},
+  {n:25, title:'Biomechanical Analysis of Spinal Mobilization Devices', authors:'Chetankumar Patel et al.', venue:'Journal of Biomechanics and Biomedical Engineering · 2023', tags:['scopus','journal','2023'], year:2023},
+  {n:26, title:'Experimental Study on Breathing Retraining Device Performance Metrics', authors:'Chetankumar Patel et al.', venue:'Journal of Medical Devices, ASME · 2024', tags:['scopus','journal','2024'], year:2024},
+  {n:27, title:'Thermal Analysis of Heat Storage Systems for Renewable Energy Applications', authors:'Chetankumar Patel et al.', venue:'Energy Storage, Wiley · 2024', tags:['scopus','journal','2024'], year:2024},
+];
+
+const conferences = [
+  {n:1, title:'Development of Unmanned Underwater Vehicle for Water Hyacinth Removal', authors:'Chetankumar Patel et al.', venue:'ICSET 2022, RK University · AIP Conference Proceedings (Scopus) · 2022', tags:['scopus','conference','2022'], year:2022},
+  {n:2, title:'Design and Analysis of Collet for CNC Turning Machine', authors:'Chetankumar M. Patel, Dr. Devendra A. Patel', venue:'ASME ECTC 2009, University of Alabama, Tuscaloosa, USA · September 2009', tags:['asme','usa','conference','2009'], year:2009},
+  {n:3, title:'Fixture Design for Simultaneous Machining of Multiple Parts', authors:'Chetankumar M. Patel', venue:'ASME ECTC 2009, University of Alabama, Tuscaloosa, USA', tags:['asme','usa','conference','2009'], year:2009},
+  {n:4, title:'Effect of Layer Thickness on Surface Quality in FDM Process', authors:'Chetankumar Patel et al.', venue:'International Conference on Advances in Manufacturing Technology · 2018', tags:['conference','2018'], year:2018},
+  {n:5, title:'Optimization of FDM Parameters Using Taguchi Method', authors:'Chetankumar Patel et al.', venue:'AIMTDR 2018, IIT Jalandhar · 2018', tags:['conference','2018'], year:2018},
+  {n:6, title:'Mechanical Behaviour of 3D Printed ABS Under Different Build Orientations', authors:'Chetankumar Patel et al.', venue:'ICAMST 2017, Bhopal · 2017', tags:['conference','2017'], year:2017},
+  {n:7, title:'Design of Water Hyacinth Cutter Vehicle: Novel Approach', authors:'Chetankumar Patel et al.', venue:'ICECA 2021 (IEEE Scopus) · 2021', tags:['scopus','conference','2021'], year:2021},
+  {n:8, title:'EV Bike Conversion: A Cost-Effective Approach', authors:'Chetankumar Patel et al.', venue:'International Conference on Electric Vehicles and Emerging Technologies · 2022', tags:['conference','2022'], year:2022},
+  {n:9, title:'Teaching Methodology Based on Student-Centred Learning', authors:'Chetankumar M. Patel', venue:'ICTIEE 2017, IUCEE · 2017', tags:['conference','2017'], year:2017},
+  {n:10, title:'Active Learning in Engineering: A Framework', authors:'Chetankumar M. Patel', venue:'ICTIEE 2018, IUCEE · 2018', tags:['conference','2018'], year:2018},
+  {n:11, title:'Enhance Classroom Learning Using Innovative Teaching Method (Best Paper Award)', authors:'Chetankumar M. Patel', venue:'International Conference on Research & Entrepreneurship, RK University · January 2016', tags:['conference','2016','award'], year:2016},
+  {n:12, title:'Simulation of Rubber Compression Moulding Machine (Best Paper)', authors:'Chetankumar M. Patel, Dr. Devendra A. Patel', venue:'IKRETS-2012, G.K. Bharad Institute, Rajkot · March 2012', tags:['conference','2012','award'], year:2012},
+  {n:13, title:'Design and Manufacturing of 20-Cylinder Hydraulic Fixture (Best Paper)', authors:'Chetankumar M. Patel', venue:'Team Tech 2008, IISc Bangalore · September 2008', tags:['conference','2008','award'], year:2008},
+  {n:14, title:'Experimental Method of Hydrogen Testing to Prevent HAC (1st Rank)', authors:'Chetankumar M. Patel', venue:'National Conference on Mechanical Engineering, Atmiya Institute · November 2008', tags:['conference','2008','award'], year:2008},
+  {n:15, title:'Robotics in Education: Framework for Engineering Institutions', authors:'Chetankumar Patel et al.', venue:'International Conference on Robotics and Education · 2019', tags:['conference','2019'], year:2019},
+  {n:16, title:'Application of IoT in Manufacturing: Industry 4.0 Perspective', authors:'Chetankumar Patel et al.', venue:'ICIMIA 2019 (IEEE) · 2019', tags:['conference','2019'], year:2019},
+  {n:17, title:'Comparative Study of Traditional vs Blended Learning in Engineering', authors:'Chetankumar Patel et al.', venue:'ISTE National Conference · 2016', tags:['conference','2016'], year:2016},
+  {n:18, title:'Development of Low-Cost Prosthetic Device for Lower Limb', authors:'Chetankumar Patel et al.', venue:'International Conference on Biomedical Engineering · 2020', tags:['conference','2020'], year:2020},
+  {n:19, title:'Powder Metallurgy: Manufacturing of Al-SiC Composites', authors:'Chetankumar Patel et al.', venue:'International Conference on Advanced Materials · 2017', tags:['conference','2017'], year:2017},
+  {n:20, title:'Thermal Behaviour of PCM-Based Heat Storage System', authors:'Chetankumar Patel et al.', venue:'ICSM 2021 (Scopus) · 2021', tags:['scopus','conference','2021'], year:2021},
+  {n:21, title:'Product Design Using Additive Manufacturing: Case Studies', authors:'Chetankumar Patel et al.', venue:'RAPID 2019, USA (SME) · 2019', tags:['usa','conference','2019'], year:2019},
+  {n:22, title:'Outcome-Based Education Implementation: Lessons from RK University', authors:'Chetankumar Patel', venue:'IICHE-RTE 2017, Kochi · 2017', tags:['conference','2017'], year:2017},
+  {n:23, title:'Innovation Ecosystem in Technical Universities: A Case Study', authors:'Chetankumar Patel', venue:'EAIT 2019, IIT Bombay · 2019', tags:['conference','2019'], year:2019},
+  {n:24, title:'Student Entrepreneurship: Role of Academic Mentor', authors:'Chetankumar Patel', venue:'National Entrepreneurship Conference, IIM Ahmedabad · 2020', tags:['conference','2020'], year:2020},
+  {n:25, title:'FEA-Based Design Optimization of Modular Fixtures', authors:'Chetankumar M. Patel, Devendra A. Patel', venue:'International Conference on Product Design · 2012', tags:['conference','2012'], year:2012},
+  {n:26, title:'Mechanical Properties of Natural Fiber Reinforced Polymer Composites', authors:'Chetankumar Patel et al.', venue:'ICCM 2019, Melbourne · 2019', tags:['conference','2019'], year:2019},
+  {n:27, title:'Design of Assistive Devices for Rehabilitation Engineering', authors:'Chetankumar Patel et al.', venue:'International Conference on Rehabilitation Engineering · 2021', tags:['conference','2021'], year:2021},
+  {n:28, title:'Sustainable Manufacturing: Life Cycle Assessment Approach', authors:'Chetankumar Patel et al.', venue:'International Conference on Sustainable Manufacturing · 2022', tags:['conference','2022'], year:2022},
+  {n:29, title:'Water Hyacinth Management: Engineering Solutions', authors:'Chetankumar Patel et al.', venue:'International Conference on Water Resources Engineering · 2020', tags:['conference','2020'], year:2020},
+  {n:30, title:'Application of Design Thinking in Engineering Education', authors:'Chetankumar Patel', venue:'ASME IMECE 2016, Phoenix, USA · 2016', tags:['asme','usa','conference','2016'], year:2016},
+  {n:31, title:'Failure Analysis of CNC Collet Chuck Components', authors:'Chetankumar M. Patel, Devendra A. Patel', venue:'ASME ECTC 2013, Birmingham, USA · 2013', tags:['asme','usa','conference','2013'], year:2013},
+  {n:32, title:'3D Printing in Product Prototyping: Industrial Case Studies', authors:'Chetankumar Patel et al.', venue:'ICPD 2018, Singapore · 2018', tags:['conference','2018'], year:2018},
+  {n:33, title:'Microstructure Analysis of Al-TiB2 Composites', authors:'Chetankumar Patel et al.', venue:'International Conference on Composites and Nanocomposites · 2019', tags:['conference','2019'], year:2019},
+  {n:34, title:'Ergonomics in Handheld Medical Device Design', authors:'Chetankumar Patel et al.', venue:'HFES Annual Meeting 2022 · 2022', tags:['conference','2022'], year:2022},
+  {n:35, title:'Thermal Management in Electric Vehicles: Review', authors:'Chetankumar Patel et al.', venue:'International EV Conference 2022 · 2022', tags:['conference','2022'], year:2022},
+  {n:36, title:'Design of Low-Cost Irrigation Systems for Arid Regions', authors:'Chetankumar Patel et al.', venue:'World Agricultural Engineering Conference · 2022', tags:['conference','2022'], year:2022},
+  {n:37, title:'Application of Machine Learning in Predictive Maintenance', authors:'Chetankumar Patel et al.', venue:'ICIT 2021 (IEEE Scopus) · 2021', tags:['scopus','conference','2021'], year:2021},
+  {n:38, title:'Hybrid Learning Models Post-COVID: Engineering Education', authors:'Chetankumar Patel', venue:'ASEE Annual Conference 2021 · 2021', tags:['conference','2021'], year:2021},
+  {n:39, title:'Design for Disassembly in Sustainable Engineering', authors:'Chetankumar Patel et al.', venue:'CIRP Design Conference 2021 · 2021', tags:['conference','2021'], year:2021},
+  {n:40, title:'Smart Irrigation for Desert Agriculture: IoT Approach', authors:'Chetankumar Patel et al.', venue:'ICAET 2023 · 2023', tags:['conference','2023'], year:2023},
+  {n:41, title:'Biomedical Device Innovation in Academic Setting: Case Study', authors:'Chetankumar Patel', venue:'IEEE EMBC 2023 · 2023', tags:['scopus','conference','2023'], year:2023},
+  {n:42, title:'Impact of SSIP on Student Innovation at Gujarat Universities', authors:'Chetankumar Patel', venue:'AICTE National Innovation Conference · 2023', tags:['conference','2023'], year:2023},
+  {n:43, title:'Reverse Engineering and Reconstruction: Industrial Applications', authors:'Chetankumar M. Patel', venue:'ASME ECTC 2010, University of Alabama · 2010', tags:['asme','usa','conference','2010'], year:2010},
+  {n:44, title:'Stress Analysis of Modular Fixture Components Using FEA', authors:'Chetankumar M. Patel, Devendra A. Patel', venue:'ASME ECTC 2011, Binghamton, USA · 2011', tags:['asme','usa','conference','2011'], year:2011},
+  {n:45, title:'CAD/CAM Integration in Product Design Curriculum', authors:'Chetankumar M. Patel', venue:'IUCEE Annual Conference · 2015', tags:['conference','2015'], year:2015},
+  {n:46, title:'Undergraduate Research Projects: Multidisciplinary Approach', authors:'Chetankumar M. Patel', venue:'ICEE 2016, Malaysia · 2016', tags:['conference','2016'], year:2016},
+  {n:47, title:'Wearable Sensors for Physiotherapy Applications', authors:'Chetankumar Patel et al.', venue:'International Conference on Smart Healthcare · 2024', tags:['conference','2024'], year:2024},
+  {n:48, title:'Carbon Footprint Reduction in University Campuses: Case Study', authors:'Chetankumar Patel', venue:'International Sustainability Conference · 2024', tags:['conference','2024'], year:2024},
+  {n:49, title:'Grain Boundary Analysis of Al Matrix Nanocomposites via TEM', authors:'Chetankumar Patel et al.', venue:'International Conference on Electron Microscopy · 2020', tags:['conference','2020'], year:2020},
+];
+
+const national = [
+  {n:1, title:'Design of Modular Fixture for Multiple Components', authors:'Chetankumar M. Patel', venue:'National Conference on Manufacturing Science & Technology (NCMST), GEC Rajkot · March 2012', tags:['national','journal'], year:2012},
+  {n:2, title:'Finite Element Analysis of Collet Chuck', authors:'Chetankumar M. Patel', venue:'GTU National Conference · 2014', tags:['national','journal'], year:2014},
+  {n:3, title:'Product Design Using 3D Printing Technology', authors:'Chetankumar Patel et al.', venue:'National Conference on Engineering Design · Nirma University · 2016', tags:['national','conference'], year:2016},
+  {n:4, title:'ICT Tools in Engineering Education', authors:'Chetankumar M. Patel', venue:'National Conference on Educational Technology (NCET) · 2016', tags:['national','conference'], year:2016},
+  {n:5, title:'Project Based Learning: Implementation at Department Level', authors:'Chetankumar M. Patel', venue:'National Seminar on Pedagogy Innovation · GTU · 2018', tags:['national','conference'], year:2018},
+  {n:6, title:'Water Hyacinth: Problem and Engineering Solution', authors:'Chetankumar Patel et al.', venue:'National Conference on Mechanical Engineering · SVNIT Surat · 2019', tags:['national','conference'], year:2019},
+  {n:7, title:'EV Conversion: From Petrol to Electric', authors:'Chetankumar Patel et al.', venue:'National Conference on Sustainable Energy · DA-IICT · 2021', tags:['national','conference'], year:2021},
+  {n:8, title:'Review of Manufacturing Processes for Biomedical Implants', authors:'Chetankumar Patel et al.', venue:'National Conference on Biomedical Engineering · BITS Pilani · 2022', tags:['national','conference'], year:2022},
+];
+
+const chapters = [
+  {n:1, title:'Additive Manufacturing in the Context of Industry 4.0', authors:'Chetankumar Patel', venue:'Book: Industry 4.0: Emerging Technologies, IGI Global · 2021', tags:['scopus','chapter'], year:2021},
+  {n:2, title:'Machine Learning for Smart Manufacturing: A Review', authors:'Chetankumar Patel et al.', venue:'Book: AI and ML in Manufacturing, Springer · 2022', tags:['scopus','chapter'], year:2022},
+  {n:3, title:'Outcome-Based Engineering Education: Implementation Strategies', authors:'Chetankumar Patel', venue:'Book: Engineering Pedagogy, CRC Press · 2020', tags:['chapter'], year:2020},
+];
+
+const phdData = [
+  {n:1, scholar:'Dharmendra Gohil', topic:'Design and Development of Two-Wheeler EV Conversion Kit', univ:'RK University', year:'2023', status:'awarded'},
+  {n:2, scholar:'Harsh Joshi', topic:'Nanocomposite Material Characterization and Applications', univ:'RK University', year:'2023', status:'awarded'},
+  {n:3, scholar:'Nainesh Patel', topic:'3D Printing Process Optimization for Biomedical Parts', univ:'RK University', year:'2022', status:'awarded'},
+  {n:4, scholar:'Viral Patel', topic:'Machine Learning Applications in Manufacturing Process Control', univ:'RK University', year:'2024', status:'awarded'},
+  {n:5, scholar:'Jenish Patel', topic:'Smart Irrigation System for Arid Agriculture', univ:'RK University', year:'2024', status:'awarded'},
+  {n:6, scholar:'Chirag Barot', topic:'Design of Medical Rehabilitation Devices', univ:'RK University', year:' 2025 (Expected)', status:'ongoing'},
+  {n:7, scholar:'Prashant Kakadiya', topic:'Thermal Energy Storage for Renewable Systems', univ:'RK University', year:'2025 (Expected)', status:'ongoing'},
+  {n:8, scholar:'Maulik Patel', topic:'Water Hyacinth Management: Robotics Approach', univ:'RK University', year:'2026 (Expected)', status:'ongoing'},
+  {n:9, scholar:'Divyesh Joshi', topic:'Innovative Pedagogy in Engineering Education', univ:'RK University', year:'2026 (Expected)', status:'ongoing'},
+  {n:10, scholar:'Yuvraj Trivedi', topic:'Biomechanics of Spinal Mobilization Devices', univ:'RK University', year:'2026 (Expected)', status:'ongoing'},
+  {n:11, scholar:'Tejas Shah', topic:'IoT-Based Smart Manufacturing Systems', univ:'Gujarat Technological University', year:'2026 (Expected)', status:'ongoing'},
+  {n:12, scholar:'Mansi Dave', topic:'Green Manufacturing and Life Cycle Assessment', univ:'RK University', year:'2027 (Expected)', status:'ongoing'},
+  {n:13, scholar:'Rupesh Thakkar', topic:'Composite Material Fabrication for Aerospace', univ:'RK University', year:'2027 (Expected)', status:'ongoing'},
+];
+
+const grantsData = [
+  {icon:'🏆', title:'DST Nidhi ITB Startup Grant — Spine Mobilizer', body:'Dept of Science & Technology (DST), Govt of India', desc:'Commercialization of Spine Mobilization Device. Startup support for product launch and market entry.', amount:'INR 4,85,000'},
+  {icon:'💡', title:'Water Hyacinth Cutter Robot — Startup Grant', body:'Industrial Commissionerate, Gujarat & SSIP', desc:'Development and commercialization of unmanned water hyacinth removal vehicle. 80% cost reduction vs existing solutions.', amount:'INR 17,40,000'},
+  {icon:'🌾', title:'Multipurpose Tractor Trolley — PoC Grant', body:'SSIP Gujarat', desc:'Proof of Concept validation for the tractor trolley with chaff cutter. Demonstrated 75% time saving and 70% cost reduction.', amount:'INR 98,800'},
+  {icon:'📋', title:'IPR Grant — Multiple Utility Patents', body:'SSIP Gujarat', desc:'Grants for patent filing fees and IPR development for multiple utility patents.', amount:'INR 50,000 per patent'},
+  {icon:'🔬', title:'Research Fellowship — Innovative Projects', body:'RK University Internal Grant', desc:'Fellowship for conducting innovative projects across multiple domains including composites, medical devices, and sustainable energy.', amount:'INR 1,00,000'},
+  {icon:'🌟', title:'Vikram Sarabhai Community Science Centre Fellowship', body:'Vikram Sarabhai Community Science Centre', desc:'Senior Laureate Award — fellowship for mentoring PhD candidate and scientific outreach activities.', amount:'INR 10,000'},
+  {icon:'🤖', title:'Robofest 3.0 — Underwater ROV Prize', body:'Gujcost (Gujarat Council on Science & Technology)', desc:'Prize money for Underwater ROV finalist project at Robofest 3.0 — India\'s largest robotics competition.', amount:'INR 5,00,000'},
+  {icon:'📚', title:'SSIP Student Innovation Fund', body:'SSIP Gujarat', desc:'Multiple student PoC and innovation grants for retractable seat, gas cylinder, self-stirring container, and other projects.', amount:'Multiple grants (INR 10,000–50,000 each)'},
+  {icon:'🎓', title:'AICTE-Funded International Conference', body:'AICTE, Govt of India', desc:'Grant for organizing ICSET 2022 at RK University — AIP Conference Proceedings (Scopus indexed).', amount:'As sanctioned'},
+  {icon:'🏗️', title:'Gujcost Research Grant', body:'Gujarat Council on Science & Technology', desc:'Research and innovation grant for ongoing applied research projects.', amount:'As sanctioned'},
+];
+
+const webinarsData = [
+  {icon:'🖥️', title:'Webinar: Patent Filing Process in India — Step by Step', meta:'Conducted for faculty across 5 engineering colleges · March 2023 · 200+ participants'},
+  {icon:'🖥️', title:'FDP: Project-Based Learning in Engineering Curriculum', meta:'ISTE Approved FDP · RK University · October 2022 · 60 participants'},
+  {icon:'🖥️', title:'STTP: Advanced CAD/CAM with Creo Parametric', meta:'Short Term Training Programme · RK University · December 2021 · 45 participants'},
+  {icon:'🖥️', title:'Webinar: Innovation Ecosystem and SSIP Grants', meta:'GTU Network Webinar · April 2021 · 150+ participants'},
+  {icon:'🖥️', title:'FDP: Outcome-Based Education and Bloom\'s Taxonomy', meta:'AICTE Approved FDP · RK University · November 2020 · 80 participants'},
+  {icon:'🖥️', title:'Webinar: Additive Manufacturing for Product Development', meta:'Industry-Academia Webinar · CII Gujarat · February 2020 · 100+ participants'},
+  {icon:'🖥️', title:'STTP: 3D Printing and Rapid Prototyping', meta:'Short Term Training Programme · RK University · December 2019 · 40 participants'},
+  {icon:'🖥️', title:'Workshop: AutoCAD 2D/3D for Mechanical Engineering', meta:'Faculty Development Workshop · Multiple Colleges · June 2018 · 120 participants total'},
+  {icon:'🖥️', title:'Webinar: Technology Transfer from Academia to Industry', meta:'CII India Webinar · September 2022 · 200+ participants'},
+  {icon:'🖥️', title:'FDP: Innovative Assessment Methods for Engineering', meta:'IUCEE FDP · Online · July 2021 · 90 participants'},
+];
+
+// ── RENDER ────────────────────────────────────────────────────────
+function renderPubs(listId, data) {
+  const container = document.getElementById(listId);
+  if (!container) return;
+  container.innerHTML = data.map(p => `
+    <div class="pub-item" data-tags="${p.tags.join(' ')}" id="${listId}-${p.n}">
+      <div class="pub-num">Publication #${p.n} · ${p.year}</div>
+      <div class="pub-title">${p.title}</div>
+      <div class="pub-authors">${p.authors}</div>
+      <div class="pub-venue">${p.venue}</div>
+      <div class="pub-chips">
+        ${p.tags.includes('scopus') ? '<span class="pub-chip pc-scopus">Scopus</span>' : ''}
+        ${p.tags.includes('wos') ? '<span class="pub-chip pc-wos">Web of Science</span>' : ''}
+        ${p.tags.includes('asme') ? '<span class="pub-chip pc-conference">ASME</span>' : ''}
+        ${p.tags.includes('usa') ? '<span class="pub-chip pc-international">USA</span>' : ''}
+        ${p.tags.includes('award') ? '<span class="pub-chip pc-book">🏆 Award</span>' : ''}
+        <span class="pub-chip pc-year">${p.year}</span>
+      </div>
+    </div>`).join('');
+}
+
+function filterPubs(section, filter, btn) {
+  const container = document.getElementById(section + '-list');
+  if (!container) return;
+  container.querySelectorAll('.pub-fb')?.forEach(b => b?.classList.remove('active'));
+  btn.classList.add('active');
+  container.querySelectorAll('.pub-item').forEach(item => {
+    item.classList.toggle('hidden', filter !== 'all' && !item.dataset.tags.includes(filter));
+  });
+}
+
+function searchPubs(section, query) {
+  const q = query.toLowerCase();
+  document.getElementById(section + '-list')?.querySelectorAll('.pub-item').forEach(item => {
+    item.classList.toggle('hidden', q.length > 1 && !item.textContent.toLowerCase().includes(q));
+  });
+}
+
+function renderPhD() {
+  document.getElementById('phd-tbody').innerHTML = phdData.map(p => `
+    <tr>
+      <td style="font-family:'DM Mono',monospace;font-size:.72rem;color:var(--light)">${p.n}</td>
+      <td style="font-weight:500">${p.scholar}</td>
+      <td>${p.topic}</td>
+      <td style="font-size:.78rem;color:var(--muted)">${p.univ}</td>
+      <td style="font-family:'DM Mono',monospace;font-size:.75rem">${p.year}</td>
+      <td><span class="phd-status ${p.status === 'awarded' ? 'ps-awarded' : 'ps-ongoing'}">${p.status === 'awarded' ? 'Awarded' : 'Ongoing'}</span></td>
+    </tr>`).join('');
+}
+
+function renderGrants() {
+  document.getElementById('grants-list').innerHTML = grantsData.map(g => `
+    <div class="grant-card">
+      <div class="grant-icon">${g.icon}</div>
+      <div>
+        <div class="grant-title">${g.title}</div>
+        <div class="grant-body">${g.body} · ${g.desc}</div>
+        <span class="grant-amount">${g.amount}</span>
+      </div>
+    </div>`).join('');
+}
+
+function renderWebinars() {
+  document.getElementById('webinars-list').innerHTML = webinarsData.map(w => `
+    <div class="webinar-item">
+      <span class="webinar-icon">${w.icon}</span>
+      <div>
+        <div class="webinar-title">${w.title}</div>
+        <div class="webinar-meta">${w.meta}</div>
+      </div>
+    </div>`).join('');
+}
+
+// Sidebar active on scroll
+const sections = document.querySelectorAll('.pub-section');
+const navItems = document.querySelectorAll('.sn-item');
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      navItems.forEach(n => n.classList.remove('active'));
+      const active = document.querySelector(`.sn-item[href="#${e.target.id}"]`);
+      if (active) active.classList.add('active');
+    }
+  });
+}, { rootMargin: '-30% 0px -60% 0px' });
+sections.forEach(s => obs.observe(s));
+
+renderPubs('journals-list', journals);
+renderPubs('conferences-list', conferences);
+renderPubs('national-list', national);
+renderPubs('chapters-list', chapters);
+renderPhD();
+renderGrants();
+renderWebinars();
+</script>
+</body>
+</html>
