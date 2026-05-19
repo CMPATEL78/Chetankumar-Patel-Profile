@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spine Mobilization Device — Dr. Chetankumar Patel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#1B3A6B;--gold:#C8972B;--gold2:#E8B84B;
+  --cream:#FAF7F2;--warm:#F2EDE4;--smoke:#E8E2D8;
+  --ink:#1A1410;--muted:#6B6359;--light:#A89F94;--white:#FFFFFF;
+  --green:#2E7D32;--blue:#1565C0;--amber:#8D6E18;
+  --r:.75rem;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);line-height:1.6}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:.85rem 3rem;background:rgba(250,247,242,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--smoke)}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:600;color:var(--navy);text-decoration:none}
+.nav-back{font-size:.78rem;color:var(--muted);text-decoration:none;display:flex;align-items:center;gap:.3rem;transition:color .2s}
+.nav-back:hover{color:var(--navy)}
+
+/* HERO */
+.proj-hero{padding:8rem 3rem 3.5rem;background:linear-gradient(135deg,var(--navy) 0%,#0F2244 65%,#162f5e 100%);position:relative;overflow:hidden}
+.proj-hero::before{content:'';position:absolute;top:-20%;right:-10%;width:50vw;height:50vw;border:1px solid rgba(200,151,43,.1);border-radius:50%}
+.hero-inner{max-width:900px;position:relative;z-index:2}
+.back-link{display:inline-flex;align-items:center;gap:.35rem;font-size:.75rem;color:rgba(255,255,255,.5);text-decoration:none;margin-bottom:1.5rem;transition:color .2s}
+.back-link:hover{color:var(--gold2)}
+.proj-category{font-family:'DM Mono',monospace;font-size:.7rem;color:var(--gold2);letter-spacing:.15em;text-transform:uppercase;margin-bottom:.75rem}
+.proj-hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.2rem,5vw,3.8rem);font-weight:700;color:var(--white);line-height:1.1;margin-bottom:.6rem}
+.proj-subtitle{font-size:.95rem;color:rgba(255,255,255,.55);margin-bottom:2rem}
+.proj-meta-row{display:flex;flex-wrap:wrap;gap:.7rem}
+.proj-meta-chip{display:inline-flex;align-items:center;gap:.35rem;background:rgba(255,255,255,.08);border:1px solid rgba(200,151,43,.2);border-radius:20px;padding:.3rem .85rem;font-size:.73rem;color:rgba(255,255,255,.75)}
+.status-chip-granted{background:rgba(46,125,50,.2);color:#81c784;border-color:rgba(46,125,50,.3)}
+.status-chip-commercialized{background:rgba(200,151,43,.15);color:var(--gold2);border-color:rgba(200,151,43,.3)}
+.status-chip-published{background:rgba(21,101,192,.15);color:#90caf9;border-color:rgba(21,101,192,.3)}
+
+/* LAYOUT */
+.proj-body{max-width:900px;margin:0 auto;padding:3.5rem 3rem}
+.proj-grid{display:grid;grid-template-columns:1fr 320px;gap:2.5rem;align-items:start}
+.proj-main{}
+.proj-sidebar{}
+
+/* SECTIONS */
+.proj-section{margin-bottom:2.5rem}
+.proj-section h2{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:700;color:var(--navy);margin-bottom:.75rem;padding-bottom:.4rem;border-bottom:2px solid var(--gold);display:inline-block}
+.proj-section p{font-size:.9rem;line-height:1.7;color:var(--ink);margin-bottom:.75rem}
+.proj-section ul{list-style:none;margin-bottom:.75rem}
+.proj-section ul li{font-size:.9rem;color:var(--ink);padding:.3rem 0;border-bottom:1px solid var(--warm);display:flex;gap:.5rem;align-items:flex-start}
+.proj-section ul li::before{content:'→';color:var(--gold);flex-shrink:0;margin-top:1px}
+.proj-section ul li:last-child{border-bottom:none}
+
+/* IMAGES */
+.proj-gallery{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin:1.25rem 0}
+.proj-gallery.single{grid-template-columns:1fr}
+.proj-img{width:100%;border-radius:var(--r);object-fit:cover;background:var(--warm)}
+.img-caption{font-size:.75rem;color:var(--light);margin-top:.3rem;font-style:italic;text-align:center}
+
+/* SIDEBAR */
+.sidebar-card{background:var(--white);border:1px solid var(--smoke);border-radius:calc(var(--r)*1.5);padding:1.35rem;margin-bottom:1.25rem}
+.sidebar-card h3{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:700;color:var(--navy);margin-bottom:.85rem;padding-bottom:.4rem;border-bottom:1px solid var(--smoke)}
+.sb-row{display:flex;justify-content:space-between;align-items:flex-start;padding:.4rem 0;border-bottom:1px solid var(--warm);font-size:.82rem;gap:.5rem}
+.sb-row:last-child{border-bottom:none}
+.sb-label{color:var(--muted);flex-shrink:0;min-width:80px}
+.sb-val{color:var(--ink);font-weight:500;text-align:right;font-family:'DM Mono',monospace;font-size:.75rem}
+.sb-val.normal{font-family:'DM Sans',sans-serif;font-size:.82rem}
+.uae-pill{display:inline-block;background:#fff8e1;color:#7B5800;border:1px solid #ffd54f;border-radius:20px;padding:.15rem .6rem;font-size:.7rem;font-weight:500}
+.grant-item{padding:.5rem 0;border-bottom:1px solid var(--warm);font-size:.82rem}
+.grant-item:last-child{border-bottom:none}
+.grant-name{font-weight:500;color:var(--ink);margin-bottom:.15rem}
+.grant-amount{font-family:'DM Mono',monospace;font-size:.75rem;color:var(--muted)}
+
+/* OUTCOMES */
+.outcome-grid{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin:1rem 0}
+.outcome-box{background:var(--warm);border-radius:var(--r);padding:.9rem;text-align:center}
+.outcome-num{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:700;color:var(--navy);line-height:1}
+.outcome-label{font-size:.72rem;color:var(--muted);margin-top:.2rem;text-transform:uppercase;letter-spacing:.06em}
+
+/* NAV BETWEEN PROJECTS */
+.proj-nav{display:flex;justify-content:space-between;padding:2rem 0;border-top:1px solid var(--smoke);margin-top:3rem}
+.proj-nav a{font-size:.82rem;color:var(--navy);text-decoration:none;display:flex;align-items:center;gap:.35rem;font-weight:500;transition:color .2s}
+.proj-nav a:hover{color:var(--gold)}
+
+footer{background:#0D1F3C;padding:1.4rem 3rem;text-align:center;font-size:.72rem;color:rgba(255,255,255,.28)}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.proj-hero h1,.proj-subtitle,.proj-meta-row,.proj-category{animation:fadeUp .6s ease forwards}
+.proj-category{animation-delay:.1s;opacity:0}
+.proj-hero h1{animation-delay:.2s;opacity:0}
+.proj-subtitle{animation-delay:.3s;opacity:0}
+.proj-meta-row{animation-delay:.4s;opacity:0}
+
+@media(max-width:768px){
+  nav{padding:.7rem 1.2rem}
+  .proj-hero{padding:6rem 1.2rem 2.5rem}
+  .proj-body{padding:2rem 1.2rem}
+  .proj-grid{grid-template-columns:1fr}
+  .proj-gallery{grid-template-columns:1fr}
+  .outcome-grid{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="../index.html" class="nav-logo">Dr. Chetankumar Patel</a>
+  <a href="../index.html#projects" class="nav-back">← All Projects</a>
+</nav>
+
+<!-- HERO -->
+<div class="proj-hero">
+  <div class="hero-inner">
+    <a href="../index.html#projects" class="back-link">← Back to all projects</a>
+    <p class="proj-category">Health Tech · Medical Device</p>
+    <h1>Spine Mobilization Device</h1>
+    <p class="proj-subtitle">The only handheld spine mobilization device of its kind globally — commercialized and currently available in market.</p>
+    <div class="proj-meta-row">
+      <span class="proj-meta-chip status-chip-commercialized">★ Commercialized</span>
+      <span class="proj-meta-chip">Patent IN 202221059481</span>
+      <span class="proj-meta-chip">Published Oct 2022</span>
+      <span class="proj-meta-chip">★ High UAE Relevance</span>
+      <span class="proj-meta-chip">DST Nidhi ITB Grant ✓</span>
+    </div>
+  </div>
+</div>
+
+<!-- BODY -->
+<div class="proj-body">
+  <div class="proj-grid">
+
+    <!-- MAIN CONTENT -->
+    <div class="proj-main">
+
+      <!-- Problem Statement -->
+      <div class="proj-section">
+        <h2>Problem Statement</h2>
+        <p>Physiotherapists performing spinal mobilization techniques must apply controlled, repetitive force to specific vertebral joints using their hands. This is physically demanding — causing occupational musculoskeletal strain in the physiotherapist's wrists, thumbs, and shoulders over time — while also making it difficult to apply precise, consistent force across patient sessions.</p>
+        <p>Existing commercial tools for spinal mobilization are either large clinical machines (expensive, immobile) or generic massage devices that do not deliver the specific force vectors required for therapeutic spinal joint mobilization. No handheld, purpose-built device existed in the market at the time of filing.</p>
+      </div>
+
+      <!-- Innovation -->
+      <div class="proj-section">
+        <h2>The Innovation</h2>
+        <p>A compact, handheld device designed specifically for physiotherapists to apply controlled, adjustable mobilization force to spinal joints. The device features:</p>
+        <ul>
+          <li>Dual hook arms that cradle the spinous processes of adjacent vertebrae</li>
+          <li>Central threaded rod with knurled grip for controlled force application</li>
+          <li>Adjustable arm spacing to accommodate different spinal levels and patient anatomy</li>
+          <li>Ergonomic grip design reducing physiotherapist wrist strain</li>
+          <li>Lightweight construction suitable for home visits and clinic use</li>
+        </ul>
+
+        <!-- CAD Images -->
+        <div class="proj-gallery">
+          <div>
+            <img src="../imgs/p7.jpg" alt="Spine Mobilizer CAD exploded view" class="proj-img">
+            <p class="img-caption">CAD exploded view showing threaded mechanism</p>
+          </div>
+          <div>
+            <img src="../imgs/p7g.jpg" alt="Spine Mobilizer commercial product in box" class="proj-img">
+            <p class="img-caption">Commercial product — ready for sale</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Methodology -->
+      <div class="proj-section">
+        <h2>Methodology</h2>
+        <p>The project followed a structured design-to-market process:</p>
+        <ul>
+          <li>Literature review — existing spinal mobilization techniques and tools</li>
+          <li>Physiotherapist interviews — understanding force requirements, grip preferences, and clinical workflow</li>
+          <li>CAD design and iterative prototyping using 3D printing</li>
+          <li>Ergonomics testing with volunteer physiotherapists</li>
+          <li>Patent filing (October 2022) + two design registrations (February 2023)</li>
+          <li>DST Nidhi ITB startup grant application and award</li>
+          <li>Manufacturing setup and commercial launch</li>
+        </ul>
+      </div>
+
+      <!-- Outcomes -->
+      <div class="proj-section">
+        <h2>Outcomes &amp; Impact</h2>
+        <div class="outcome-grid">
+          <div class="outcome-box"><div class="outcome-num">1st</div><div class="outcome-label">of its kind globally</div></div>
+          <div class="outcome-box"><div class="outcome-num">3</div><div class="outcome-label">IP registrations</div></div>
+          <div class="outcome-box"><div class="outcome-num">₹4.85L</div><div class="outcome-label">DST startup grant</div></div>
+          <div class="outcome-box"><div class="outcome-num">✓</div><div class="outcome-label">In commercial market</div></div>
+        </div>
+        <p style="margin-top:1rem">The device is currently being sold commercially with branded retail packaging. It represents the first clinical-grade handheld spine mobilization instrument to be commercialized from an Indian academic institution.</p>
+      </div>
+
+      <!-- UAE Relevance -->
+      <div class="proj-section">
+        <h2>UAE Market Relevance</h2>
+        <p>This innovation directly aligns with the <strong>UAE Health Strategy 2030</strong>, which prioritizes musculoskeletal health, physiotherapy innovation, and medical tourism development.</p>
+        <ul>
+          <li>UAE has 900+ registered physiotherapy clinics — immediate addressable market</li>
+          <li>UAE medical tourism sector is growing rapidly — unique devices attract international patients</li>
+          <li>Target partners: Aster, NMC Health, Burjeel, and Mediclinic hospital chains</li>
+          <li>Technology transfer pathway: licensing or manufacturing partnership with UAE medical device distributor</li>
+          <li>Potential for ADAFSA registration and Gulf-wide distribution from UAE hub</li>
+        </ul>
+      </div>
+
+      <!-- Project Navigation -->
+      <div class="proj-nav">
+        <a href="breathing-device.html">← Breathing Retraining Device</a>
+        <a href="tractor-trolley.html">Multipurpose Tractor Trolley →</a>
+      </div>
+
+    </div>
+
+    <!-- SIDEBAR -->
+    <div class="proj-sidebar">
+
+      <!-- Patent Details -->
+      <div class="sidebar-card">
+        <h3>Patent Details</h3>
+        <div class="sb-row"><span class="sb-label">App No.</span><span class="sb-val">IN 202221059481</span></div>
+        <div class="sb-row"><span class="sb-label">Status</span><span class="sb-val normal" style="color:var(--amber);font-weight:500">Published</span></div>
+        <div class="sb-row"><span class="sb-label">Filed</span><span class="sb-val normal">Oct 2022</span></div>
+        <div class="sb-row"><span class="sb-label">Office</span><span class="sb-val normal">Indian Patent Office</span></div>
+        <div class="sb-row"><span class="sb-label">Design 1</span><span class="sb-val">379188-001</span></div>
+        <div class="sb-row"><span class="sb-label">Design 2</span><span class="sb-val">379193-001</span></div>
+        <div class="sb-row"><span class="sb-label">UAE Relevance</span><span><span class="uae-pill">★ High</span></span></div>
+      </div>
+
+      <!-- Funding -->
+      <div class="sidebar-card">
+        <h3>Funding &amp; Recognition</h3>
+        <div class="grant-item">
+          <div class="grant-name">DST Nidhi ITB Startup Grant</div>
+          <div class="grant-amount">INR 4,85,000 · Dept of Science &amp; Technology</div>
+        </div>
+        <div class="grant-item">
+          <div class="grant-name">SSIP IPR Grant</div>
+          <div class="grant-amount">INR 50,000 · Gujarat SSIP</div>
+        </div>
+        <div class="grant-item">
+          <div class="grant-name">Industrial Commissionerate Support</div>
+          <div class="grant-amount">Startup &amp; Innovation Support · Gujarat</div>
+        </div>
+      </div>
+
+      <!-- Team -->
+      <div class="sidebar-card">
+        <h3>Project Team</h3>
+        <div class="sb-row"><span class="sb-label">Lead</span><span class="sb-val normal">Dr. Chetankumar Patel</span></div>
+        <div class="sb-row"><span class="sb-label">Type</span><span class="sb-val normal">Interdisciplinary (Mech + PhysioTech)</span></div>
+        <div class="sb-row"><span class="sb-label">Duration</span><span class="sb-val normal">2021 – Present</span></div>
+        <div class="sb-row"><span class="sb-label">Stage</span><span class="sb-val normal" style="color:var(--green);font-weight:500">Commercialized</span></div>
+      </div>
+
+      <!-- Related Activities -->
+      <div class="sidebar-card">
+        <h3>Related Activities</h3>
+        <div style="font-size:.82rem;color:var(--muted);line-height:1.6">
+          <p>This project was showcased at:</p>
+          <ul style="margin:.5rem 0;padding-left:1rem;color:var(--ink)">
+            <li style="margin-bottom:.3rem">National Innovation Day Exhibition (Apr 2026)</li>
+            <li style="margin-bottom:.3rem">DST Nidhi Demo Day, Gandhinagar</li>
+            <li>SSIP Startup Showcase, Gujarat</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Download -->
+      <a href="../Patent_Portfolio_UAE_with_Images.docx" download style="display:block;background:var(--navy);color:var(--white);border-radius:var(--r);padding:1rem;text-align:center;text-decoration:none;font-size:.85rem;font-weight:500;transition:background .2s">
+        📄 Download Full Portfolio (DOCX)
+      </a>
+
+    </div>
+  </div>
+</div>
+
+<footer>© 2026 Dr. Chetankumar Patel · RK University, Rajkot</footer>
+
+</body>
+</html>
